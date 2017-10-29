@@ -1,1 +1,4 @@
-# MasterBitcoinCN
+# 精通比特币第二版中文译本
+
+
+
