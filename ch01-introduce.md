@@ -94,7 +94,7 @@ Satoshi Nakamoto于2011年4月退出公众视线，将代码和网络的责任�
 
 当Alice首次运行Mycelium时，与许多比特币钱包一样，应用程序会为她自动创建一个新的钱包。Alice在她的屏幕上看到钱包，如“Mycelium手机钱包”如下图1-1所示（注意：不要将比特币发送到此示例地址，它将永远丢失）。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-6ab2763645c4afa9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-6ab2763645c4afa9.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 图1-1 Mycelium移动钱包
 
@@ -156,7 +156,7 @@ Joe然后在他的智能手机钱包上选择发送，并显示一个包含两�
 
 Joe现在将Alice的比特币地址设置为收件人。Joe输入的金额为10美元，他的钱包通过访问在线服务的最新汇率来转换它。当时的汇率是每个比特币$ 100美元，所以如Joe的钱包（见图1-2Airbitz移动比特币钱包发送屏幕）截图所示，10美元的价值是0.10比特币（BTC）或100毫比银币（mBTC）。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-d429031dbda4b9da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-d429031dbda4b9da.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 图1-2. Airbitz移动比特币钱包发送屏幕Joe然后仔细检查，以确保他已经输入了正确的金额，因为他要汇款，错误是不可逆转的。经过仔细检查地址和金额后，他按发送方式传送交易。 Joe的移动比特币钱包构建了一个交易，从Joe的钱包将0.10 BTC发送给Alice提供的地址，并用Joe的私钥签署交易。这告诉比特币网络，Joe已经授权将这笔钱转移给Alice的新地址。当交易通过对等协议传输时，它会快速传播到比特币网络。在不到一秒钟内，网络中大多数连接良好的节点都会首次接收到交易，并且首次看到Alice的地址。
 
