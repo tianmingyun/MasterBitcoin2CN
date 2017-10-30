@@ -11,5 +11,5 @@
 * [第八章比特币网络](di-ba-zhang-bi-te-bi-wang-luo.md)
 * [第九章区块链](di-jiu-zhang-qu-kuai-lian.md)
 * [第十章挖矿和共识](di-shi-zhang-wa-kuang-he-gong-shi.md)
-* 第十一章比特币安全
+* [第十一章比特币安全](di-shi-yi-zhang-bi-te-bi-an-quan.md)
 
