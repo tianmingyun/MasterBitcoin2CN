@@ -7,4 +7,5 @@
 * [第四章密钥地址](di-si-zhang-mi-yao-di-zhi.md)
 * [第五章钱包](di-wu-zhang-qian-bao.md)
 * [第六章交易](di-liu-zhang-jiao-yi.md)
+* [第七章高级交易和脚本](di-qi-zhang-gao-ji-jiao-yi-he-jiao-ben.md)
 
