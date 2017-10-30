@@ -10,4 +10,5 @@
 * [第七章高级交易和脚本](di-qi-zhang-gao-ji-jiao-yi-he-jiao-ben.md)
 * [第八章比特币网络](di-ba-zhang-bi-te-bi-wang-luo.md)
 * [第九章区块链](di-jiu-zhang-qu-kuai-lian.md)
+* [第十章挖矿和共识](di-shi-zhang-wa-kuang-he-gong-shi.md)
 
