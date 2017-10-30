@@ -6,4 +6,5 @@
 * [第三章比特币客户端](di-san-zhang-bi-te-bi-ke-hu-duan.md)
 * [第四章密钥地址](di-si-zhang-mi-yao-di-zhi.md)
 * [第五章钱包](di-wu-zhang-qian-bao.md)
+* [第六章交易](di-liu-zhang-jiao-yi.md)
 
