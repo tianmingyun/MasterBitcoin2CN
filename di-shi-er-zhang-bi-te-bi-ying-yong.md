@@ -6,7 +6,23 @@
 
 # 12.2构建块（基元）
 
-当运行正常且长期运行时，比特币系统提供了一定的保证，可以作为构建块来创建应用程序。 这些包括：**没有双重支出**比特币分散共识算法的最根本保证是确保UTXO不会花费两次。**不可改变性**一旦交易被记录在区块中，并且随后的区块中添加了足够的工作，交易数据就变得不可更改。 不可改变性是由能量进行承保的，因为重写区块链需要有真实的能源支出才能产生工作证明。 所需的能量以及由此带来的不可变性的程度随着在包含交易的区块之上承诺的工作量而增加。**中立**去中心化的比特币网络传播有效的交易，而不管这些交易的来源或内容如何。 这意味着任何人都可以支付足够的费用创建有效的交易，并相信他们可以随时传输该交易并将其包含在区块链中。**安全时间戳**共识规则拒绝任何时间戳距离现在太远（过去和将来）的块。 这可以确保块上的时间戳可以被信任。 块上的时间戳意味着对所有包含的交易的输入的未花费之前的保证。**授权**在去中心化网络中验证的数字签名提供授权保证。没有脚本中隐含的私钥的持有人的授权，包含数字签名要求的脚本就不能被执行。**审计能力**所有交易都是公开的，可以被审计。 所有的交易和交易所属的区块都可以链接到一个不间断的区块链并最终链接到创始区块。**会计**在任何交易中（coinbase交易除外），输入的金额等于输出的金额加上交易费用。 不可能在交易中创建或销毁比特币数额。 输出不能超过输入。**永不过期**有效的交易永远不会过期。 如果今天有效，它将在不久的将来有效，只要输入仍然没有被花费，共识规则没有改变。**完整性**使用SIGHASH\_ALL签名的比特币交易或由另一个SIGHASH类型签署的交易的部分不能在签名还有效的情况下被修改，从而导致交易本身无效。**交易原子性**比特币交易是原子的（译者注：原子性是指交易要么全部执行，要么完全不执行，不存在中间状态）。 它们或者是有效的和经过确认的（挖矿），或者不是。 不存在挖矿出交易的一部分，交易也不存在中间状态。 在任何时间点，交易要么被挖出，要么不是，不存在中间状态。**离散（不可分割）价值单位**交易输出是离散和不可分割的价值单位。 他们或者整体被花费或者整体没有花费，被可以全部用完或不用了。 他们不能分开或者部分被花费。**法定人数**脚本中的多重签名约束规定了多权限方案中的预定义的授权定额。 M-of-N要求由共识规则执行。**Timelock/老化**包含相对或绝对时间锁的任何脚本语句只能在其时间超过指定时间后执行。**复制**区块链的去中心化存储确保了在交易开采之后，经过充分的确认，它被复制到整个网络上，并且经受得起电力损失，数据丢失等的影响。**伪造保护**每笔交易只能花费现有的经过验证的输出。不可能创建或伪造价值。**一致性**在没有矿工分区的情况下，根据记录的深度，记录在块状块中的块将受限于被重新组织或以指数级降低的可能性。一旦被记录在深层，改变所需的计算和能量将大到不可行的程度。**记录外部状态**交易可以通过OP\_RETURN提交一个值，表示外部状态机中的状态转换。**可预测发行**发行速度是可预测的，发行总量也是可以预测的，不到2100万比特币。上述构建块区的列表并不完整，还会有新功能都被介绍添加到比特币中。
+当运行正常且长期运行时，比特币系统提供了一定的保证，可以作为构建块来创建应用程序。 
+
+这些包括：
+
+**没有双重支出**比特币分散共识算法的最根本保证是确保UTXO不会花费两次。
+
+**不可改变性**一旦交易被记录在区块中，并且随后的区块中添加了足够的工作，交易数据就变得不可更改。 不可改变性是由能量进行承保的，因为重写区块链需要有真实的能源支出才能产生工作证明。 所需的能量以及由此带来的不可变性的程度随着在包含交易的区块之上承诺的工作量而增加。
+
+**中立**去中心化的比特币网络传播有效的交易，而不管这些交易的来源或内容如何。 这意味着任何人都可以支付足够的费用创建有效的交易，并相信他们可以随时传输该交易并将其包含在区块链中。
+
+**安全时间戳**共识规则拒绝任何时间戳距离现在太远（过去和将来）的块。 这可以确保块上的时间戳可以被信任。 块上的时间戳意味着对所有包含的交易的输入的未花费之前的保证。
+
+**授权**在去中心化网络中验证的数字签名提供授权保证。没有脚本中隐含的私钥的持有人的授权，包含数字签名要求的脚本就不能被执行。
+
+**审计能力**所有交易都是公开的，可以被审计。 所有的交易和交易所属的区块都可以链接到一个不间断的区块链并最终链接到创始区块。
+
+**会计**在任何交易中（coinbase交易除外），输入的金额等于输出的金额加上交易费用。 不可能在交易中创建或销毁比特币数额。 输出不能超过输入。**永不过期**有效的交易永远不会过期。 如果今天有效，它将在不久的将来有效，只要输入仍然没有被花费，共识规则没有改变。**完整性**使用SIGHASH\_ALL签名的比特币交易或由另一个SIGHASH类型签署的交易的部分不能在签名还有效的情况下被修改，从而导致交易本身无效。**交易原子性**比特币交易是原子的（译者注：原子性是指交易要么全部执行，要么完全不执行，不存在中间状态）。 它们或者是有效的和经过确认的（挖矿），或者不是。 不存在挖矿出交易的一部分，交易也不存在中间状态。 在任何时间点，交易要么被挖出，要么不是，不存在中间状态。**离散（不可分割）价值单位**交易输出是离散和不可分割的价值单位。 他们或者整体被花费或者整体没有花费，被可以全部用完或不用了。 他们不能分开或者部分被花费。**法定人数**脚本中的多重签名约束规定了多权限方案中的预定义的授权定额。 M-of-N要求由共识规则执行。**Timelock/老化**包含相对或绝对时间锁的任何脚本语句只能在其时间超过指定时间后执行。**复制**区块链的去中心化存储确保了在交易开采之后，经过充分的确认，它被复制到整个网络上，并且经受得起电力损失，数据丢失等的影响。**伪造保护**每笔交易只能花费现有的经过验证的输出。不可能创建或伪造价值。**一致性**在没有矿工分区的情况下，根据记录的深度，记录在块状块中的块将受限于被重新组织或以指数级降低的可能性。一旦被记录在深层，改变所需的计算和能量将大到不可行的程度。**记录外部状态**交易可以通过OP\_RETURN提交一个值，表示外部状态机中的状态转换。**可预测发行**发行速度是可预测的，发行总量也是可以预测的，不到2100万比特币。上述构建块区的列表并不完整，还会有新功能都被介绍添加到比特币中。
 
 # 12.3源于构建区块的应用
 
@@ -34,18 +50,14 @@ Payment Channels控制法定人数+时间锁+不能双重支付+永不过期+审
 
 下图12-1显示使用Coinprism块浏览器的发行交易：[https://www.coinprism.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec](https://www.coinprism.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec)
 
-![](http://upload-images.jianshu.io/upload_images/1785959-5e143aa41aae429d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)正如你所看到的那样，coinprism显示了发行的20个“精通比特币的免费拷贝”，短名称为MasterBTC的资产，发给了一个特殊的彩色硬币地址：akTnsDt5uzpioRST76VFRQM8q8sBFnQiwcx**警告**发送到该地址的任何资金或染色币将永远丢失。 不要发送到这个示例地址！发行交易的交易ID是“正常”比特币交易ID。下图12-2显示在区块浏览器中不会对染色币进行解码的同一笔交易。 我们将使用blockchain.info：[https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec](https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec)
+![](http://upload-images.jianshu.io/upload_images/1785959-5e143aa41aae429d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)正如你所看到的那样，coinprism显示了发行的20个“精通比特币的免费拷贝”，短名称为MasterBTC的资产，发给了一个特殊的彩色硬币地址：akTnsDt5uzpioRST76VFRQM8q8sBFnQiwcx**警告**发送到该地址的任何资金或染色币将永远丢失。 不要发送到这个示例地址！发行交易的交易ID是“正常”比特币交易ID。下图12-2显示在区块浏览器中不会对染色币进行解码的同一笔交易。 我们将使用blockchain.info：[https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec](https://blockchain.info/tx/10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec)
 
-![](http://upload-images.jianshu.io/upload_images/1785959-bbb428948063d223.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)正如你所看到的，blockchain.info不认为这是一个染色币交易。 事实上，它以红色字母表示“无法解码输出地址”的第二个输出。如果您在该屏幕上选择“显示脚本和coinbase”，可以看到有关交易的更多详细信息\(下图12-3\)
+![](http://upload-images.jianshu.io/upload_images/1785959-bbb428948063d223.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)正如你所看到的，blockchain.info不认为这是一个染色币交易。 事实上，它以红色字母表示“无法解码输出地址”的第二个输出。如果您在该屏幕上选择“显示脚本和coinbase”，可以看到有关交易的更多详细信息\(下图12-3\)
 
-![](http://upload-images.jianshu.io/upload_images/1785959-40c0c43f9dc8f9de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)再次，blockchain.info并不能理解第二个输出。 它以红色字母表示“奇怪”。 但是，我们可以看到，标记输出中的一些元数据是可读的：OP\_RETURN 4f41010001141b753d68747470733a2f2f6370722e736d2f466f796b777248365559\(decoded\) "OAu=[https://cpr.sm/FoykwrH6UY](https://cpr.sm/FoykwrH6UY)让我们使用bitcoin-cli检索交易：$ bitcoin-cli decoderawtransaction`bitcoin-cli getrawtransaction 10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec`剥离其余的交易，第二个输出如下所示：{"value": 0.00000000,"n": 1,"scriptPubKey": "OP\_RETURN 4f41010001141b753d68747470733a2f2f6370722e736d2f466f796b777248365559"}前缀4F41表示字母“OA”，代表“Open Assets”，并帮助我们确定以下是由Open Assets协议定义的元数据。 以下ASCII编码的字符串是指向资产定义的链接：u=[https://cpr.sm/FoykwrH6UY](https://cpr.sm/FoykwrH6UY)如果我们检索此URL，我们将获得JSON编码的资产定义，如下所示：{"asset\_ids": \[
+![](http://upload-images.jianshu.io/upload_images/1785959-40c0c43f9dc8f9de.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)再次，blockchain.info并不能理解第二个输出。 它以红色字母表示“奇怪”。 但是，我们可以看到，标记输出中的一些元数据是可读的：OP\_RETURN 4f41010001141b753d68747470733a2f2f6370722e736d2f466f796b777248365559\(decoded\) "OAu=[https://cpr.sm/FoykwrH6UY](https://cpr.sm/FoykwrH6UY)让我们使用bitcoin-cli检索交易：$ bitcoin-cli decoderawtransaction`bitcoin-cli getrawtransaction 10d7c4e022f35288779be6713471151ede967caaa39eecd35296aa36d9c109ec`剥离其余的交易，第二个输出如下所示：{"value": 0.00000000,"n": 1,"scriptPubKey": "OP\_RETURN 4f41010001141b753d68747470733a2f2f6370722e736d2f466f796b777248365559"}前缀4F41表示字母“OA”，代表“Open Assets”，并帮助我们确定以下是由Open Assets协议定义的元数据。 以下ASCII编码的字符串是指向资产定义的链接：u=[https://cpr.sm/FoykwrH6UY](https://cpr.sm/FoykwrH6UY)如果我们检索此URL，我们将获得JSON编码的资产定义，如下所示：{"asset\_ids": \[
 
 ```
 "AcuRVsoa81hoLHmVTNXrRD8KpTqUXeqwgH"
-
-
-
-
 ```
 
 \],"contract\_url": null,"name\_short": "MasterBTC","name": "Free copy of \"Mastering Bitcoin\"","issuer": "Andreas M. Antonopoulos","description": "This token is redeemable for a free copy of the book \"Mastering Bitcoin\"","description\_mime": "text/x-markdown; charset=UTF-8","type": "Other","divisibility": 0,"link\_to\_website": false,"icon\_url": null,"image\_url": null,"version": "1.0"}
@@ -80,13 +92,13 @@ Payment Channels控制法定人数+时间锁+不能双重支付+永不过期+审
 
 在通道的整个生命周期中，只有两个交易需要提交给链上进行挖矿：资金和结算交易。在这两个状态之间，双方可以交换任何其他人永远不会看到的任何数量的承诺交易，也不会提交到链上。下图12-4说明了Bob和Alice之间的支付通道，显示了资金，承诺和结算交易。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-183d1092bebf88a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-183d1092bebf88a0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 ## 12.6.2简单支付通道示例
 
 要说明状态通道，我们必须从一个非常简单的例子开始。 我们展示一个单向通道，意味着价值只在一个方向流动。 我们还将从天真的假设开始，没有人试图欺骗，让一切保持简单。 一旦我们解释了基本的通道概念，我们就会看见，什么使得它是无信任的，以便任何一方都不能欺骗，即使他们尝试过。对于这个例子，我们假设两个参与者：Emma和Fabian。 Fabian提供视频流服务，后者是消费者，使用微支付通道缴费。 Fabian每秒视频收费0.01毫比（0.00001 BTC），相当于每小时36小时（0.036 BTC）的视频。 Emma是从Fabian购买流媒体视频服务的用户。下图12-5显示Emma使用付款渠道从Fabian购买视频流服务。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-6d796922f33334c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-6d796922f33334c1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 在这个例子中，Fabian和Emma正在使用专门的处理支付通道和视频流的软件。 Emma打开软件的浏览器，Fabian管理着服务器。该软件包括基本的比特币钱包功能，可以创建和签署比特币交易。概念和术语“支付通道”都完全对于用户是不可见的。他们看到的是随着时间流失的视频。
 
@@ -104,7 +116,7 @@ Payment Channels控制法定人数+时间锁+不能双重支付+永不过期+审
 
 最后，Emma点击“停止”停止流媒体视频。 Fabian或Emma现在可以发送最终状态交易以进行结算。最后一笔交易是结算交易，并向Fabian支付所有Emma消费的视频，并向Emma退还剩余的资金交易。图12-6显示了Emma和Fabian之间的通道以及更新通道余额的承诺交易。最后，只有两个交易记录在块上：建立通道的资金交易和两个参与者之间正确分配最终余额的结算交易。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-49ab48839864d40d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-49ab48839864d40d.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 ## 12.6.3制造无需信任的通道
 
@@ -126,7 +138,7 @@ Payment Channels控制法定人数+时间锁+不能双重支付+永不过期+审
 
 例如，如果将来承诺交易＃1被时间锁定到4320个块，则将来承诺交易＃2被时间锁定到4319个块。在承诺交易＃1变为有效之前，承诺交易＃600可以有600个块的时长。图12-7显示每个承诺交易设置较短的时间锁，允许在之前的承诺变为有效之前花费
 
-![](http://upload-images.jianshu.io/upload_images/1785959-afb8f99e2db2c50a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-afb8f99e2db2c50a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 每个后续承诺交易必须具有较短的时间锁，以便可以在其前任之前和退款交易之前进行广播。以前广播承诺的能力确保了能够花费资金输出，并排除任何其他承诺交易通过支出来赎回。比特币区块链提供的担保，防止双重支出和执行时间锁定，有效地允许每个承诺交易使其前任无效。
 
@@ -163,10 +175,6 @@ Output 0&lt;5 bitcoin&gt;:
 Irene's Public Key
 >
  CHECKSIG
-
-
-
-
 ```
 
 Output 1:
@@ -183,10 +191,6 @@ DROP
 Hitesh's Public Key
 >
  CHECKSIG
-
-
-
-
 ```
 
 Irene有不同的承诺交易有两个产出。 第一个输出支付Hitesh欠他的5比特币。 第二个输出支付Irene，欠她的5比特币，但同样只有经过1000个区块的时间段。 Irene持有的承诺交易（由Hitesh签署）看起来像这样：Input: 2-of-2 funding output, signed by Hitesh
@@ -198,10 +202,6 @@ Output 0&lt;5 bitcoin&gt;:
 Hitesh's Public Key
 >
  CHECKSIG
-
-
-
-
 ```
 
 Output 1:
@@ -218,23 +218,15 @@ DROP
 Irene's Public Key
 >
  CHECKSIG
-
-
-
-
 ```
 
-这样，每一方都有承诺交易，花费2 - 2的资金输出。 该输入由另一方签署才有效。 在任何时候，持有交易的一方也可以签字（完成2到2）并进行广播。 然而，如果他们广播承诺交易，就需要立即支付对方，而他们自己必须等待短时间锁到期。 当我们在选择单方面广播承诺交易时，如果通过拖延赎回其中一项输出，会将各方置于轻微的不利地位。 但是单靠时间延迟还不足以鼓励公平的行为。下图12-8显示两个不对称承诺交易，其中承诺持有人的延迟支付![](http://upload-images.jianshu.io/upload_images/1785959-4aa731f0cfff3add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)现在我们介绍这个方案的最后一个要素：一个撤销钥匙，允许一个对方通过占用通道的所有余额来惩罚一个骗子。每个承诺交易都有一个“延迟”的输出。 该输出的兑换脚本允许一方在1000个块之后兑换它，或者另一方如果具有插销键，也可兑换它。 所以当Hitesh为Irene签署承诺交易时，他将在1000块之后把第二个可输出支付给自己，或者提交撤销钥匙的人。 Hitesh构建了这个交易，并创建了一个他保密的撤销密钥。 当他准备转移到新的通道状态，并希望撤销这一承诺时，他只会向Irene透露。 第二个输出脚本如下所示：Output 0&lt;5 bitcoin&gt;:
+这样，每一方都有承诺交易，花费2 - 2的资金输出。 该输入由另一方签署才有效。 在任何时候，持有交易的一方也可以签字（完成2到2）并进行广播。 然而，如果他们广播承诺交易，就需要立即支付对方，而他们自己必须等待短时间锁到期。 当我们在选择单方面广播承诺交易时，如果通过拖延赎回其中一项输出，会将各方置于轻微的不利地位。 但是单靠时间延迟还不足以鼓励公平的行为。下图12-8显示两个不对称承诺交易，其中承诺持有人的延迟支付![](http://upload-images.jianshu.io/upload_images/1785959-4aa731f0cfff3add.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)现在我们介绍这个方案的最后一个要素：一个撤销钥匙，允许一个对方通过占用通道的所有余额来惩罚一个骗子。每个承诺交易都有一个“延迟”的输出。 该输出的兑换脚本允许一方在1000个块之后兑换它，或者另一方如果具有插销键，也可兑换它。 所以当Hitesh为Irene签署承诺交易时，他将在1000块之后把第二个可输出支付给自己，或者提交撤销钥匙的人。 Hitesh构建了这个交易，并创建了一个他保密的撤销密钥。 当他准备转移到新的通道状态，并希望撤销这一承诺时，他只会向Irene透露。 第二个输出脚本如下所示：Output 0&lt;5 bitcoin&gt;:
 
 ```
 <
 Irene's Public Key
 >
  CHECKSIG
-
-
-
-
 ```
 
 Output 1&lt;5 bitcoin&gt;:IF
@@ -245,10 +237,6 @@ Output 1&lt;5 bitcoin&gt;:IF
 <
 Revocation Public Key
 >
-
-
-
-
 ```
 
 ELSE
@@ -264,10 +252,6 @@ DROP
 <
 Hitesh's Public Key
 >
-
-
-
-
 ```
 
 ENDIFCHECKSIGIrene可以自信地签署这笔交易，因为如果发送，它将立即支付她的欠款。 Hitesh持有交易，但知道如果他在单方通道关闭时发送，他将不得不等待1000个块才能获得报酬。
@@ -299,10 +283,6 @@ HASH160
 H
 >
  EQUALVERIFY
-
-
-
-
 ```
 
 ELSE
@@ -319,10 +299,6 @@ locktime
 Payee Pubic Key
 >
  CHECKSIG
-
-
-
-
 ```
 
 ENDIF知道秘密R的人，当哈希等于H时，可以通过行使IF语句的第一个子句来兑换该输出。如果秘密不透露，HTLC声称，在一定数量的块之后，收款人可以使用IF语句中的第二个子句申请退款。
@@ -345,9 +321,9 @@ ENDIF知道秘密R的人，当哈希等于H时，可以通过行使IF语句的�
 
 下图12-9显示在闪电网络中五名参与者，通过双向支付通道连接，可从Alice到Eric的付款
 
-![](http://upload-images.jianshu.io/upload_images/1785959-edf90a5ceff5a36e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)Alice想要支付Eric1个比特币。 不过，Alice并未通过支付通道连接到Eric。 创建支付通道需要资金交易，而这笔交易必须首先提交给比特币区块链。 Alice不想打开一个新的支付通道并支出更多的手续费。 有没有办法间接支付Eric？下图12-10显示了通过在连接各方参与者的支付通道上通过一系列HTLC承诺将付款从Alice路由到Eric的逐步过程。
+![](http://upload-images.jianshu.io/upload_images/1785959-edf90a5ceff5a36e.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)Alice想要支付Eric1个比特币。 不过，Alice并未通过支付通道连接到Eric。 创建支付通道需要资金交易，而这笔交易必须首先提交给比特币区块链。 Alice不想打开一个新的支付通道并支出更多的手续费。 有没有办法间接支付Eric？下图12-10显示了通过在连接各方参与者的支付通道上通过一系列HTLC承诺将付款从Alice路由到Eric的逐步过程。
 
-![](http://upload-images.jianshu.io/upload_images/1785959-4a7600f41ee8499a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://upload-images.jianshu.io/upload_images/1785959-4a7600f41ee8499a.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
 Alice正在运行闪电网络（LN）节点，该节点正在跟踪其向Bob的付费通道，并且能够发现支付通道之间的路由。Alice的LN节点还具有通过互联网连接到Eric的LN节点的能力。 Eric的LN节点使用随机数生成器创建一个秘密R。Eric的节点没有向任何人泄漏这个秘密。相反，Eric的节点计算秘密R的哈希H，并将此哈希发送到Alice的节点（请参阅图12-10步骤1）。
 
