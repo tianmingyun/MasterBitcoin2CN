@@ -117,7 +117,9 @@ Alice的钱包应用知道如何选取合适的输入和输出以建立Alice所�
 
 ## 2.3.1 获取正确的输入
 
-Alice的钱包应用首先要找到一些足够支付给Bob所需金额的输入。大多数钱包应用跟踪着钱包中某个地址的所有可用输出。因此Alice的钱包会包含她用现金从Joe那里购买的比特币的交易输出副本（参见 在“1.4.2 获取你的第一枚比特币 ”一节）。完整客户端含有整个区块链中所有交易的所有未消费输出副本。这使得钱包既能拿这些输出构建交易，又能在收到新交易时很快地验证其输入是否正确。然而，完整客户端占太大的硬盘空间，所以大多数钱包使用轻量级的客户端，只保存用户自己的未消费输出。如果钱包客户端没有某一未消费交易输出，它可以通过不同的服务者提供的各种API或完整索引节点的JSON PRC API从 比特币网络中拿到这一交易信息。例子2-1展示了用HTTP GET命令对一个特定URL建立了一个API的请求。这 个URL会返回一个地址的所有未消费交易输出，以提供给需要这些信息的任何应用作为建立新交易的输入而进行消费。 我们用一个简单的HTTP命令行客户端 cURL来获得这个响应数据。例2-1 查找Alice的比特币地址所有的未消费的输出$ curl[https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK](https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK){
+Alice的钱包应用首先要找到一些足够支付给Bob所需金额的输入。大多数钱包应用跟踪着钱包中某个地址的所有可用输出。因此Alice的钱包会包含她用现金从Joe那里购买的比特币的交易输出副本（参见 在“获取你的第一枚比特币 ”一节）。完整客户端含有整个区块链中所有交易的所有未消费输出副本。这使得钱包既能拿这些输出构建交易，又能在收到新交易时很快地验证其输入是否正确。然而，完整客户端占太大的硬盘空间，所以大多数钱包使用轻量级的客户端，只保存用户自己的未消费输出。
+
+如果钱包客户端没有某一未消费交易输出，它可以通过不同的服务者提供的各种API或完整索引节点的JSON PRC API从 比特币网络中拿到这一交易信息。例子2-1展示了用HTTP GET命令对一个特定URL建立了一个API的请求。这 个URL会返回一个地址的所有未消费交易输出，以提供给需要这些信息的任何应用作为建立新交易的输入而进行消费。 我们用一个简单的HTTP命令行客户端 cURL来获得这个响应数据。例2-1 查找Alice的比特币地址所有的未消费的输出$ curl[https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK](https://blockchain.info/unspent?active=1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK){
 
 ```
 "unspent_outputs":[
