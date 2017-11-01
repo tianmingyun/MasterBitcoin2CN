@@ -1,8 +1,14 @@
 # 3.1 比特币核心：参考实现
 
-Bitcoin是一个开源项目，源代码可以根据开放（MIT）许可证提供，可免费下载并用于任何目的。 开源意味着不仅仅是自由使用。 这也意味着比特币是由一个开放的志愿者社区开发的。 起初这个社区只有中本聪。 到2016年，比特币的源代码有超过400个贡献者，大约十几位开发人员几乎全职工作，几十名开发人员兼职。 任何人都可以为代码贡献 - 包括你！当由中本聪创建比特币时，软件实际上是在后来大名鼎鼎的\[satoshi\_whitepaper\]白皮书之前完成的。 中本聪想在写作之前确保它有效工作。 那么这个第一个实践，就叫做“比特币（Bitcoin）”或者“Satoshi客户”，实际上已经被大大的修改和改进了。它已经演变成所谓的比特币核心，以区别于其他兼容的实现方式。 比特币核心是比特币系统的参考实现，这意味着它是如何实施的权威参考。 Bitcoin Core实现了比特币的所有方面，包括钱包，交易和区块验证引擎，以及P2P网络中的完整网络节点。**警示**即使Bitcoin Core包含钱包的参考实现，但这并不意味着可以用作用户或应用程序的生产钱包。 建议应用程序开发人员使用现代标准（如BIP-39和BIP-32）构建钱包（请参阅\[mnemonic\_code\_words\]和\[hd\_wallets\]）。 BIP就是比特币改进提案（Bitcoin Improvement Proposal）。下图为比特币核心的架构。
+Bitcoin是一个开源项目，源代码可以根据开放（MIT）许可证提供，可免费下载并用于任何目的。 开源意味着不仅仅是自由使用。 这也意味着比特币是由一个开放的志愿者社区开发的。 起初这个社区只有中本聪。 到2016年，比特币的源代码有超过400个贡献者，大约十几位开发人员几乎全职工作，几十名开发人员兼职。 任何人都可以为代码贡献 - 包括你！
 
-![](http://upload-images.jianshu.io/upload_images/1785959-f26aad728f4a907f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+当由中本聪创建比特币时，软件实际上是在后来大名鼎鼎的\[satoshi\_whitepaper\]白皮书之前完成的。 中本聪想在写作之前确保它有效工作。 那么这个第一个实践，就叫做“比特币（Bitcoin）”或者“Satoshi客户”，实际上已经被大大的修改和改进了。它已经演变成所谓的比特币核心，以区别于其他兼容的实现方式。 比特币核心是比特币系统的参考实现，这意味着它是如何实施的权威参考。 Bitcoin Core实现了比特币的所有方面，包括钱包，交易和区块验证引擎，以及P2P网络中的完整网络节点。
+
+**警示**即使Bitcoin Core包含钱包的参考实现，但这并不意味着可以用作用户或应用程序的生产钱包。 建议应用程序开发人员使用现代标准（如BIP-39和BIP-32）构建钱包（请参阅助记词\]和\[hd钱包\]章节）。 BIP就是比特币改进提案（Bitcoin Improvement Proposal）。
+
+下图为比特币核心的架构。
+
+![](http://upload-images.jianshu.io/upload_images/1785959-f26aad728f4a907f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)图3-1比特币核心架构（来源Eric Lombrozo）
 
 ## 3.1.1比特币开发环境
 
@@ -10,9 +16,28 @@ Bitcoin是一个开源项目，源代码可以根据开放（MIT）许可证提�
 
 ## 3.1.2从源码编译比特币核心
 
-Bitcoin Core的源代码可以作为ZIP存档下载，也可以从GitHub克隆权威的源代码库。 在GitHub比特币页面[GitHub bitcoin page](https://github.com/bitcoin/bitcoin)上，选择“下载ZIP”。 或者，使用git命令行在系统上创建源代码的本地副本。**提示**在本章的许多例子中，我们将使用操作系统的命令行界面（也称为“shell”），通过“terminal”应用程序访问。 shell将显示提示你键入命令，并且shell反馈一些文本和一个新的提示您的下一个命令。 提示符可能在您的系统上看起来不同，但在以下示例中，它由符号表示（非用户）。在示例中，当您在符号后面看到文本时，不要键入符号，而是在其后面键入命令，然后按键执行该命令。在示例中，每个命令下面的行是操作系统对该命令的响应。当你看到下一个前缀时，应该继续输入下一个新的命令，可以一直重复这个过程。在本例中，我们使用git命令来创建源代码的本地副本（“clone”）：$ git clone[https://github.com/bitcoin/bitcoin.git](https://github.com/bitcoin/bitcoin.git)Cloning into 'bitcoin'...remote: Counting objects: 66193, done.remote: Total 66193 \(delta 0\), reused 0 \(delta 0\), pack-reused 66193Receiving objects: 100% \(66193/66193\), 63.39 MiB \| 574.00 KiB/s, done.Resolving deltas: 100% \(48395/48395\), done.Checking connectivity... done.$
+Bitcoin Core的源代码可以作为ZIP存档下载，也可以从GitHub克隆权威的源代码库。 在GitHub比特币页面[GitHub bitcoin page](https://github.com/bitcoin/bitcoin)上，选择“下载ZIP”。 或者，使用git命令行在系统上创建源代码的本地副本。
 
-**提示**Git是最广泛使用的分布式版本控制系统，是任何软件开发人员工具包的重要组成部分。 您可能需要在操作系统上安装git命令或git的图形用户界面。当git克隆操作完成后，您将在目录比特币中拥有源代码存储库的完整本地副本。 在提示符下键入“cd bitcoin”，进入为此目录：$ cd bitcoin
+**提示**在本章的许多例子中，我们将使用操作系统的命令行界面（也称为“shell”），通过“terminal”应用程序访问。 shell将显示提示你键入命令，并且shell反馈一些文本和一个新的提示您的下一个命令。 提示符可能在您的系统上看起来不同，但在以下示例中，它由符号表示（非用户）。在示例中，当您在符号后面看到文本时，不要键入符号，而是在其后面键入命令，然后按键执行该命令。在示例中，每个命令下面的行是操作系统对该命令的响应。当你看到下一个前缀时，应该继续输入下一个新的命令，可以一直重复这个过程。
+
+在本例中，我们使用git命令来创建源代码的本地副本（“clone”）：
+
+```
+$ git clone https://github.com/bitcoin/bitcoin.git
+Cloning into 'bitcoin'...
+remote: Counting objects: 66193, done.
+remote: Total 66193 (delta 0), reused 0 (delta 0), pack-reused 66193
+Receiving objects: 100% (66193/66193), 63.39 MiB | 574.00 KiB/s, done.
+Resolving deltas: 100% (48395/48395), done.
+Checking connectivity... done.
+$
+```
+
+**提示**Git是最广泛使用的分布式版本控制系统，是任何软件开发人员工具包的重要组成部分。 您可能需要在操作系统上安装git命令或git的图形用户界面。
+
+当git克隆操作完成后，您将在目录比特币中拥有源代码存储库的完整本地副本。 在提示符下键入“cd bitcoin”，进入为此目录：
+
+$ cd bitcoin
 
 ### 3.1.2.1选择比特币核心版本
 
@@ -81,24 +106,18 @@ $ which bitcoin-cli/usr/local/bin/bitcoin-cli
 bitcoind --helpBitcoin Core Daemon version v0.11.2Usage:bitcoind \[options\] Start Bitcoin Core DaemonOptions:-?
 
 ```
-
-
  This help message
 ```
 
 -alerts
 
 ```
-
-
  Receive and display P2P network alerts (default: 1)
 ```
 
 -alertnotify=&lt;cmd&gt;
 
 ```
-
-
  Execute command when a relevant alert is received or we see a really
 
 
@@ -108,8 +127,6 @@ bitcoind --helpBitcoin Core Daemon version v0.11.2Usage:bitcoind \[options\] Sta
 ...\[many more options\]...-rpcsslciphers=&lt;ciphers&gt;
 
 ```
-
-
  Acceptable ciphers (default:
 
 
@@ -151,8 +168,6 @@ Bitcoin version v0.11.20.0Using OpenSSL version OpenSSL 1.0.2e 3 Dec 2015Startup
 \[... more startup messages ...\]一旦您确信正在加载正确的设置并按预期运行，您可以按Ctrl-C中断进程。要在后台运行Bitcoin Core作为进程，请使用守护程序选项启动它，如bitcoind -daemon。要监视比特币节点的进度和运行状态，请使用命令bitcoin-cli getinfo：$ bitcoin-cli getinfo{
 
 ```
-
-
 "version" : 110200,
 
 
@@ -212,8 +227,6 @@ Examples:
 命令： getinfo比特币 getinfo RPC命令显示关于比特币网络节点、钱包、区块链数据库状态的基础信息。使用 bitcoin-cli 运行它：$ bitcoin-cli getinfo{
 
 ```
-
-
 "version" : 110200,
 
 
@@ -265,8 +278,6 @@ $ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵
 {"txid": "0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2","size": 258,"version": 1,"locktime": 0,"vin": \[
 
 ```
-
-
 {
 
 
@@ -297,8 +308,6 @@ $ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵
 \],"vout": \[
 
 ```
-
-
 {
 
 
@@ -390,8 +399,6 @@ $ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵
 $ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b3↵1b2cc7bdc4{"hash": "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4","confirmations": 37371,"size": 218629,"height": 277316,"version": 2,"merkleroot": "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e","tx": \[
 
 ```
-
-
 "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
 
 
@@ -410,8 +417,6 @@ $ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b3↵
 \[... hundreds of transactions ...\]
 
 ```
-
-
 "78b300b2a1d2d9449b58db7bc71c3884d6e0579617e0da4991b9734cef7ab23a",
 
 
