@@ -202,13 +202,23 @@ $ which bitcoin-cli
 
 ### 3.1.2.4运行比特币核心节点
 
-比特币的对等网络由网络“节点”组成，主要由志愿者和一些构建比特币应用程序的商业机构运行。 那些运行的比特币节点具有直接和权威的比特币区块链视图，并且具有所有交易的本地副本，由其自己的系统独立验证。 通过运行节点，您不必依赖任何第三方来验证交易。 此外，通过运行比特币节点，您可以通过使其更健壮的方式为比特币网络做出贡献。但是，运行节点需要一个具有足够资源来处理所有比特币交易的永久连接的系统。 根据您是否选择索引所有交易并保留块的完整副本，您可能还需要大量的磁盘空间和RAM。 到2016年底，全索引节点需要2 GB的RAM和125 GB的磁盘空间，以便它有增长的空间。 比特币节点还传输和接收比特币交易和块，消耗互联网带宽。 如果您的互联网连接受限，有带宽上限或按流量计费，建议您不要在其上运行比特币全节点，或以限制其带宽的方式运行它（请参阅[资源有限的系统](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#constrained_resources)）。
+比特币的对等网络由网络“节点”组成，主要由志愿者和一些构建比特币应用程序的商业机构运行。 那些运行的比特币节点具有直接和权威的比特币区块链视图，并且具有所有交易的本地副本，由其自己的系统独立验证。 通过运行节点，您不必依赖任何第三方来验证交易。 此外，通过运行比特币节点，您可以通过使其更健壮的方式为比特币网络做出贡献。
 
-**提示**Bitcoin Core默认情况下保留区块链的完整副本，与2009年成立以来在比特币网络上发生的每一笔交易相关。此数据集的大小为120GB，下载可能需要几天或几周，具体取决于 CPU和互联网连接的速度。直到完整的块链数据集被下载完成之前，Bitcoin Core将无法处理交易或更新帐户余额。 确保您有足够的磁盘空间，带宽和时间来完成初始同步。 您可以配置Bitcoin Core通过丢弃旧块来减少块链的大小（请参阅[资源有限的系统](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#constrained_resources)），但是在丢弃数据之前仍将下载整个数据集。
+但是，运行节点需要一个具有足够资源来处理所有比特币交易的永久连接的系统。 根据您是否选择索引所有交易并保留块的完整副本，您可能还需要大量的磁盘空间和RAM。 到2016年底，全索引节点需要2 GB的RAM和125 GB的磁盘空间，以便它有增长的空间。 比特币节点还传输和接收比特币交易和块，消耗互联网带宽。 如果您的互联网连接受限，有带宽上限或按流量计费，建议您不要在其上运行比特币全节点，或以限制其带宽的方式运行它（请参阅[资源有限的系统](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#constrained_resources)）。
 
-尽管有这些资源需求，但仍有成千上万的志愿者运行比特币节点。 一些在简单的系统上运行，就像Raspberry Pi（一块35美元的计算机，一张卡的大小）。 许多志愿者还在租用的服务器上运行比特币节点，通常是Linux的一些变体。 虚拟专用服务器（VPS）或云计算服务器实例可用于运行比特币节点。 这些服务器可以从各种供应商每月租用25至50美元。
+**提示 **Bitcoin Core默认情况下保留区块链的完整副本，与2009年成立以来在比特币网络上发生的每一笔交易相关。此数据集的大小为120GB，下载可能需要几天或几周，具体取决于 CPU和互联网连接的速度。直到完整的块链数据集被下载完成之前，Bitcoin Core将无法处理交易或更新帐户余额。 确保您有足够的磁盘空间，带宽和时间来完成初始同步。 您可以配置Bitcoin Core通过丢弃旧块来减少块链的大小（请参阅[资源有限的系统](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#constrained_resources)），但是在丢弃数据之前仍将下载整个数据集。
 
-为什么要运行一个节点？ 以下是一些最常见的原因：如果您正在开发比特币软件，并且需要依靠比特币节点进行可编程（API）访问网络和块链。如果您正在构建必须根据比特币共识规则验证交易的应用程序。 比特币软件公司通常运行几个节点。如果你想支持比特币。 运行节点使网络更加健壮，能够提供更多的钱包，更多的用户和更多的交易。如果您不想依赖任何第三方来处理或验证您的交易。
+尽管有这些资源需求，但仍有成千上万的志愿者运行比特币节点。 一些在简单的系统上运行，就像树莓派Raspberry Pi（一块35美元的计算机，一张卡的大小）。 许多志愿者还在租用的服务器上运行比特币节点，通常是Linux的一些变体。 虚拟专用服务器（VPS）或云计算服务器实例可用于运行比特币节点。 这些服务器可以从各种供应商每月租用25至50美元。
+
+为什么要运行一个节点？ 以下是一些最常见的原因：
+
+如果您正在开发比特币软件，并且需要依靠比特币节点进行可编程（API）访问网络和区块链。
+
+如果您正在构建必须根据比特币共识规则验证交易的应用程序。 比特币软件公司通常运行几个节点。
+
+如果你想支持比特币。 运行节点使网络更加健壮，能够提供更多的钱包，更多的用户和更多的交易。
+
+如果您不想依赖任何第三方来处理或验证您的交易。
 
 如果您正在阅读本书并对开发比特币软件感兴趣，那么您应该运行自己的节点。
 
@@ -216,59 +226,101 @@ $ which bitcoin-cli
 
 当你第一次运行bitcoind时，它会提醒你用一个安全密码给JSON-RPC接口创建一个配置文件。该密码控制对Bitcoin Core提供的应用程序编程接口（API）的访问。
 
-通过在终端输入bitcoind就可以运行bitcoind了：$ bitcoindError: To use the "-server" option, you must set a rpcpassword in the configuration file:/home/ubuntu/.bitcoin/bitcoin.confIt is recommended you use the following random password:rpcuser=bitcoinrpcrpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK\(you do not need to remember this password\)The username and password MUST NOT be the same.If the file does not exist, create it with owner-readable-only file permissions.It is also recommended to set alertnotify so you are notified of problems;for example: alertnotify=echo %s \| mail -s "Bitcoin Alert"[admin@foo.com](mailto:admin@foo.com)你可以看到，第一次运行bitcoind它会告诉你，你需要建立一个配置文件，至少有一个rpcuser和rpcpassword条目。 另外，建议您设置警报机制。 在下一节中，我们将介绍各种配置选项，并设置一个配置文件。
+通过在终端输入bitcoind就可以运行bitcoind了：
+
+```
+$ bitcoind
+Error: To use the "-server" option, you must set a rpcpassword in the configuration file:
+/home/ubuntu/.bitcoin/bitcoin.conf
+It is recommended you use the following random password:
+rpcuser=bitcoinrpc
+rpcpassword=2XA4DuKNCbtZXsBQRRNDEwEY2nM6M4H9Tx5dFjoAVVbK
+(you do not need to remember this password)
+The username and password MUST NOT be the same.
+If the file does not exist, create it with owner-readable-only file permissions.
+It is also recommended to set alertnotify so you are notified of problems;
+for example: alertnotify=echo %s | mail -s "Bitcoin Alert" admin@foo.com
+```
+
+你可以看到，第一次运行bitcoind它会告诉你，你需要建立一个配置文件，至少有一个rpcuser和rpcpassword条目。 另外，建议您设置警报机制。 在下一节中，我们将介绍各种配置选项，并设置一个配置文件。
 
 ### 3.1.2.6配置比特币核心节点
 
-在首选编辑器中编辑配置文件，并设置参数，用bitcoind推荐的强密码替换密码。 请勿使用本书中显示的密码。 在.bitcoin目录（在用户的主目录下）中创建一个文件，以便它被命名为.bitcoin / bitcoin.conf并提供用户名和密码：rpcuser=bitcoinrpcrpcpassword=CHANGE\_THIS除了rpcuser和rpcpassword选项，Bitcoin Core还提供了100多个配置选项，可以修改网络节点的行为，区块链的存储以及其操作的许多其他方面。 要查看这些选项的列表，请运行bitcoind --help：
-
-bitcoind --helpBitcoin Core Daemon version v0.11.2Usage:bitcoind \[options\] Start Bitcoin Core DaemonOptions:-?
+在首选编辑器中编辑配置文件，并设置参数，用bitcoind推荐的强密码替换密码。 请勿使用本书中显示的密码。 在.bitcoin目录（在用户的主目录下）中创建一个文件，以便它被命名为.bitcoin / bitcoin.conf并提供用户名和密码：
 
 ```
- This help message
+rpcuser=bitcoinrpc
+rpcpassword=CHANGE_THIS
 ```
 
--alerts
+除了rpcuser和rpcpassword选项，Bitcoin Core还提供了100多个配置选项，可以修改网络节点的行为，区块链的存储以及其操作的许多其他方面。 
+
+要查看这些选项的列表，请运行bitcoind --help：
 
 ```
- Receive and display P2P network alerts (default: 1)
+ bitcoind --help
+Bitcoin Core Daemon version v0.11.2
+
+Usage:
+  bitcoind [options]                     Start Bitcoin Core Daemon
+
+Options:
+
+  -?
+       This help message
+
+  -alerts
+       Receive and display P2P network alerts (default: 1)
+
+  -alertnotify=<cmd>
+       Execute command when a relevant alert is received or we see a really
+       long fork (%s in cmd is replaced by message)
+...
+[many more options]
+...
+
+  -rpcsslciphers=<ciphers>
+       Acceptable ciphers (default:
+       TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)
 ```
 
--alertnotify=&lt;cmd&gt;
+以下是您可以在配置文件中设置的一些最重要的选项，或作为bitcoind的命令行参数：
 
-```
- Execute command when a relevant alert is received or we see a really
+alertnotify
 
+运行指定的命令或脚本，通常通过电子邮件将紧急警报发送给该节点的所有者。
 
- long fork (%s in cmd is replaced by message)
-```
+conf
 
-...\[many more options\]...-rpcsslciphers=&lt;ciphers&gt;
+配置文件的另一个位置。 这只是作为bitcoind的命令行参数有意义，因为它不能在它引用的配置文件内。
 
-```
- Acceptable ciphers (default:
+datadir
 
+选择要放入所有块链数据的目录和文件系统。 默认情况下，这是您的主目录的.bitcoin子目录。 确保这个文件系统具有几GB的可用空间。
 
- TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)
-```
+prune
 
-以下是您可以在配置文件中设置的一些最重要的选项，或作为bitcoind的命令行参数：alertnotifyRun a specified command or script to send emergency alerts to the owner of this node, usually by email.
+通过删除旧的块，将磁盘空间要求降低到这个兆字节。 在资源受限的节点上不能满足完整块的节点使用这个。
 
-confAn alternative location for the configuration file. This only makes sense as a command-line parameter to bitcoind, as it can’t be inside the configuration file it refers to.
+txindex
 
-datadirSelect the directory and filesystem in which to put all the blockchain data. By default this is the .bitcoin subdirectory of your home directory. Make sure this filesystem has several gigabytes of free space.
+维护所有交易的索引。 这意味着可以通过ID以编程方式检索任何交易的块链的完整副本。
 
-pruneReduce the disk space requirements to this many megabytes, by deleting old blocks. Use this on a resource-constrained node that can’t fit the full blockchain.
+maxconnections
 
-txindexMaintain an index of all transactions. This means a complete copy of the blockchain that allows you to programmatically retrieve any transaction by ID.
+设置接受连接的最大节点数。 从默认值减少该值将减少您的带宽消耗。 如果您的网络是按照流量计费，请使用。
 
-maxconnectionsSet the maximum number of nodes from which to accept connections. Reducing this from the default will reduce your bandwidth consumption. Use if you have a data cap or pay by the gigabyte.
+maxmempool
 
-maxmempoolLimit the transaction memory pool to this many megabytes. Use it to reduce memory use of the node.
+将交易内存池限制在几兆字节。 使用它来减少节点的内存使用。
 
-maxreceivebuffer/maxsendbufferLimit per-connection memory buffer to this many multiples of 1000 bytes. Use on memory-constrained nodes.
+maxreceivebuffer/maxsendbuffer
 
-minrelaytxfeeSet the minimum fee transaction you will relay. Below this value, the transaction is treated as zero fee. Use this on memory-constrained nodes to reduce the size of the in-memory transaction pool.
+将每连接内存缓冲区限制为1000字节的多个倍数。 在内存受限节点上使用。
+
+minrelaytxfee
+
+设置您将继续的最低费用交易。 低于此值，交易被视为零费用。 在内存受限的节点上使用它来减少内存中交易池的大小。
 
 _**交易数据库索引和txindex选项**_默认情况下，Bitcoin Core构建一个仅包含与用户钱包有关的交易的数据库。 如果您想要使用诸如getrawtransaction（参见[探索和解码交易](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#exploring_and_decoding_transanctions)\)之类的命令访问任何交易，则需要配置Bitcoin Core以构建完整的交易索引，这可以通过txindex选项来实现。 在Bitcoin Core配置文件中设置txindex = 1。 如果不想一开始设置此选项，后期再想设置为完全索引，则需要使用-reindex选项重新启动bitcoind，并等待它重建索引。下面的完整索引节点的例子配置显示了如何将上述选项与完全索引节点组合起来，作为比特币应用程序的API后端运行。例3-1完整索引节点的例子alertnotify=myemailscript.sh "Alert: %s"datadir=/lotsofspace/bitcointxindex=1rpcuser=bitcoinrpcrpcpassword=CHANGE\_THIS
 
