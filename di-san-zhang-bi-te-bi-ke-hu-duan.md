@@ -581,105 +581,173 @@ $ bitcoin-cli getblockhash 277316
 
 既然我们知道我们的交易在哪个区块中，我们可以使用getblock命令，并把区块哈希值作为参数来查询对应的区块：
 
-$ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b3↵1b2cc7bdc4{"hash": "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4","confirmations": 37371,"size": 218629,"height": 277316,"version": 2,"merkleroot": "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e","tx": \[
-
 ```
-"d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
-
-
-"b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
-
-
-"04905ff987ddd4cfe603b03cfb7ca50ee81d89d1f8f5f265c38f763eea4a21fd",
-
-
-"32467aab5d04f51940075055c2f20bbd1195727c961431bf0aff8443f9710f81",
-
-
-"561c5216944e21fa29dd12aaa1a45e3397f9c0d888359cb05e1f79fe73da37bd",
+$ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b3↵
+1b2cc7bdc4
 ```
 
-\[... hundreds of transactions ...\]
-
 ```
-"78b300b2a1d2d9449b58db7bc71c3884d6e0579617e0da4991b9734cef7ab23a",
-
-
-"6c87130ec283ab4c2c493b190c20de4b28ff3caf72d16ffa1ce3e96f2069aca9",
-
-
-"6f423dbc3636ef193fd8898dfdf7621dcade1bbe509e963ffbff91f696d81a62",
-
-
-"802ba8b2adabc5796a9471f25b02ae6aeee2439c679a5c33c4bbcee97e081196",
-
-
-"eaaf6a048588d9ad4d1c092539bd571dd8af30635c152a3b0e8b611e67d1a1af",
-
-
-"e67abc6bd5e2cac169821afc51b207127f42b92a841e976f9b752157879ba8bd",
-
-
-"d38985a6a1bfd35037cb7776b2dc86797abbb7a06630f5d03df2785d50d5a2ac",
-
-
-"45ea0a3f6016d2bb90ab92c34a7aac9767671a8a84b9bcce6c019e60197c134b",
-
-
-"c098445d748ced5f178ef2ff96f2758cbec9eb32cb0fc65db313bcac1d3bc98f"
+{
+  "hash": "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4",
+  "confirmations": 37371,
+  "size": 218629,
+  "height": 277316,
+  "version": 2,
+  "merkleroot": "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e",
+  "tx": [
+    "d5ada064c6417ca25c4308bd158c34b77e1c0eca2a73cda16c737e7424afba2f",
+    "b268b45c59b39d759614757718b9918caf0ba9d97c56f3b91956ff877c503fbe",
+    "04905ff987ddd4cfe603b03cfb7ca50ee81d89d1f8f5f265c38f763eea4a21fd",
+    "32467aab5d04f51940075055c2f20bbd1195727c961431bf0aff8443f9710f81",
+    "561c5216944e21fa29dd12aaa1a45e3397f9c0d888359cb05e1f79fe73da37bd",
+[... hundreds of transactions ...]
+    "78b300b2a1d2d9449b58db7bc71c3884d6e0579617e0da4991b9734cef7ab23a",
+    "6c87130ec283ab4c2c493b190c20de4b28ff3caf72d16ffa1ce3e96f2069aca9",
+    "6f423dbc3636ef193fd8898dfdf7621dcade1bbe509e963ffbff91f696d81a62",
+    "802ba8b2adabc5796a9471f25b02ae6aeee2439c679a5c33c4bbcee97e081196",
+    "eaaf6a048588d9ad4d1c092539bd571dd8af30635c152a3b0e8b611e67d1a1af",
+    "e67abc6bd5e2cac169821afc51b207127f42b92a841e976f9b752157879ba8bd",
+    "d38985a6a1bfd35037cb7776b2dc86797abbb7a06630f5d03df2785d50d5a2ac",
+    "45ea0a3f6016d2bb90ab92c34a7aac9767671a8a84b9bcce6c019e60197c134b",
+    "c098445d748ced5f178ef2ff96f2758cbec9eb32cb0fc65db313bcac1d3bc98f"
+  ],
+  "time": 1388185914,
+  "mediantime": 1388183675,
+  "nonce": 924591752,
+  "bits": "1903a30c",
+  "difficulty": 1180923195.258026,
+  "chainwork": "000000000000000000000000000000000000000000000934695e92aaf53afa1a",
+  "previousblockhash": "0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569",
+  "nextblockhash": "000000000000000010236c269dd6ed714dd5db39d36b33959079d78dfd431ba7"
+}
 ```
 
-\],"time": 1388185914,"mediantime": 1388183675,"nonce": 924591752,"bits": "1903a30c","difficulty": 1180923195.258026,"chainwork": "000000000000000000000000000000000000000000000934695e92aaf53afa1a","previousblockhash": "0000000000000002a7bbd25a417c0374cc55261021e8a9ca74442b01284f0569","nextblockhash": "000000000000000010236c269dd6ed714dd5db39d36b33959079d78dfd431ba7"}
-
-该块包含419笔交易，列出的第64笔交易（0627052b ...）是Alice的咖啡付款。 高度条目告诉我们这是块链中的第277316块。
+该块包含419笔交易，列出的第64笔交易（0627052b ...）是Alice的咖啡付款。 高度条目告诉我们这是区块链中的第277316块。
 
 ## 3.2.3使用比特币核心的编程接口
 
 bitcoin-cli helper对于探索Bitcoin Core API和测试功能非常有用。 但是应用编程接口的全部要点是以编程方式访问功能。 在本节中，我们将演示从另一个程序访问Bitcoin Core。
 
-Bitcoin Core的API是一个JSON-RPC接口。 JSON代表JavaScript对象符号，它是一种非常方便的方式来呈现人类和程序可以轻松阅读的数据。 RPC代表远程过程调用，这意味着我们通过网络协议调用远程（位于比特币核心节点）的过程（函数）。 在这种情况下，网络协议是HTTP或HTTPS（用于加密连接）。当我们使用bitcoin-cli命令获取命令的帮助时，它给了我们一个例子，它使用curl，通用的命令行HTTP客户端来构造这些JSON-RPC调用之一：$ curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": \[\] }' -H 'content-type: text/plain;'[http://127.0.0.1:8332/](http://127.0.0.1:8332/)此命令显示curl向本地主机（127.0.0.1）提交HTTP请求，连接到默认比特币端口（8332），并使用text / plain编码向getinfo方法提交jsonrpc请求。
+Bitcoin Core的API是一个JSON-RPC接口。 JSON代表JavaScript对象符号，它是一种非常方便的方式来呈现人类和程序可以轻松阅读的数据。 RPC代表远程过程调用，这意味着我们通过网络协议调用远程（位于比特币核心节点）的过程（函数）。 在这种情况下，网络协议是HTTP或HTTPS（用于加密连接）。
+
+当我们使用bitcoin-cli命令获取命令的帮助时，它给了我们一个例子，它使用curl，通用的命令行HTTP客户端来构造这些JSON-RPC调用之一：
+
+```
+$ curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+```
+
+此命令显示curl向本地主机（127.0.0.1）提交HTTP请求，连接到默认比特币端口（8332），并使用text / plain编码向getinfo方法提交jsonrpc请求。
 
 如果您在自己的程序中实现JSON-RPC调用，则可以使用通用的HTTP库构建调用，类似于前面的curl示例所示。
 
-然而，大多数编程语言中都使用库，以“包装”比特币核心API的方式使其简单得多。 我们将使用python-bitcoinlib库来简化API访问。 请记住，这需要您有一个运行的Bitcoin Core实例，将用于进行JSON-RPC调用。下面的例子通运行getinfo中的Python脚本进行简单的getinfo调用，并从Bitcoin Core返回的数据中打印区块参数。例3-3通过Bitcoin Core的JSON-RPC API运行getinfolink:code/rpc\_example.py\[\]运行结果如下：$ python rpc\_example.py394075它告诉我们，我们的本地Bitcoin Core节点在其块链中有394075个块。 这不是一个惊人的结果，但它演示了使用库作为Bitcoin Core的JSON-RPC API的简化界面。
+然而，大多数编程语言中都使用库，以“包装”比特币核心API的方式使其简单得多。 我们将使用python-bitcoinlib库来简化API访问。 请记住，这需要您有一个运行的Bitcoin Core实例，将用于进行JSON-RPC调用。
 
-接下来，我们使用getrawtransaction和decodetransaction调用来检索Alice咖啡付款的详细信息。 在下面的例子中，我们检索Alice的交易并列出交易的输出。 对于每个输出，我们显示收件人地址和值。 作为提醒，Alice的交易有一个输出支付Bob的咖啡馆和一个输出找回Alice。例3-4检索交易并迭代其输出link:code/rpc\_transaction.py\[\]运行结果如下：$ python rpc\_transaction.py\(\[u'1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA'\], Decimal\('0.01500000'\)\)\(\[u'1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK'\], Decimal\('0.08450000'\)\)上述两个例子都比较简单。 你真的不需要一个程序来运行它们; 你可以很容易地使用bitcoin-cli helper。 然而，下一个示例需要数百个RPC调用，并更清楚地说明了使用编程接口的方便。
+下面的例子通运行getinfo中的Python脚本进行简单的getinfo调用，并从Bitcoin Core返回的数据中打印区块参数。
 
-在时，我们首先检索块277316，然后通过引用每个交易ID来检索每个419个交易。 接下来，我们迭代每个交易的输出并将其加起来。例3-5检索块并添加所有交易输出link:code/rpc\_block.py\[\]运行结果如下：$ python rpc\_block.py\('Total value in block: ', Decimal\('10322.07722534'\)\)我们的示例代码计算出，此块中交易的总价值为10,322.07722534 BTC（包括25 BTC奖励和0.0909 BTC费用）。 通过搜索块哈希或高度来比较区块浏览器站点报告的数量。 一些区块浏览器报告不包括奖励的总价值，不包括费用。 看看是否可以发现差异。
+例3-3通过Bitcoin Core的JSON-RPC API运行
+
+```
+link:code/rpc_example.py[]
+```
+
+运行结果如下：
+
+```
+$ python rpc_example.py
+394075
+```
+
+它告诉我们，我们的本地Bitcoin Core节点在其块链中有394075个块。 这不是一个惊人的结果，但它演示了使用库作为Bitcoin Core的JSON-RPC API的简化接口的基本使用。
+
+接下来，我们使用getrawtransaction和decodetransaction调用来检索Alice咖啡付款的详细信息。 在下面的例子中，我们检索Alice的交易并列出交易的输出。 对于每个输出，我们显示收件人地址和值。 作为提醒，Alice的交易有一个输出支付Bob的咖啡馆和一个输出找回Alice。
+
+例3-4检索交易并迭代其输出
+
+```
+link:code/rpc_transaction.py[]
+```
+
+运行结果如下：
+
+```
+$ python rpc_transaction.py
+([u'1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA'], Decimal('0.01500000'))
+([u'1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK'], Decimal('0.08450000'))
+```
+
+上述两个例子都比较简单。 你真的不需要一个程序来运行它们; 你可以很容易地使用bitcoin-cli helper。 然而，下一个示例需要数百个RPC调用，并更清楚地说明了使用编程接口的方便。
+
+在时，我们首先检索块277316，然后通过引用每个交易ID来检索每个419个交易。 接下来，我们迭代每个交易的输出并将其加起来。例3-5检索块并添加所有交易输出
+
+```
+link:code/rpc_block.py[]
+```
+
+运行结果如下：
+
+```
+$ python rpc_block.py
+
+('Total value in block: ', Decimal('10322.07722534'))
+```
+
+我们的示例代码计算出，此块中交易的总价值为10,322.07722534 个BTC（包括25 BTC奖励和0.0909 BTC费用）。 通过搜索块哈希或高度来比较区块浏览器站点报告的数量。 一些区块浏览器报告不包括奖励的总价值，不包括交易费用。 看看是否可以发现差异。
 
 # 3.3 其他替代客户端、资料库、工具包
 
-除了参考客户端（bitcoind），还可以使用其他的客户端和资料库去连接比特币网络和数据结构。这些工具都由一系列 的编程语言执行，用他们各自的语言为比特币程序提供原生的交互。以下列出了一部分由编程语言组织的一些最好的库，客户端和工具包：C/C++[Bitcoin Core](https://github.com/bitcoin/bitcoin)The reference implementation of bitcoin
+除了参考客户端（bitcoind），还可以使用其他的客户端和资料库去连接比特币网络和数据结构。这些工具都由一系列 的编程语言执行，用他们各自的语言为比特币程序提供原生的交互。以下列出了一部分由编程语言组织的一些最好的库，客户端和工具包：
 
-[libbitcoin](https://github.com/libbitcoin/libbitcoin)Cross-platform C++ development toolkit, node, and consensus library
+C/C++
 
-[bitcoin explorer](https://github.com/libbitcoin/libbitcoin-explorer)Libbitcoin’s command-line tool
+[Bitcoin Core](https://github.com/bitcoin/bitcoin)    The reference implementation of bitcoin
 
-[picocoin](https://github.com/jgarzik/picocoin)A C language lightweight client library for bitcoin by Jeff Garzik
+[libbitcoin](https://github.com/libbitcoin/libbitcoin)    Cross-platform C++ development toolkit, node, and consensus library
 
-JavaScript[bcoin](http://bcoin.io/)A modular and scalable full-node implementation with API
+[bitcoin explorer](https://github.com/libbitcoin/libbitcoin-explorer)    Libbitcoin’s command-line tool
 
-[Bitcore](https://bitcore.io/)Full node, API, and library by Bitpay
+[picocoin](https://github.com/jgarzik/picocoin)    A C language lightweight client library for bitcoin by Jeff Garzik
 
-[BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib)A pure JavaScript Bitcoin library for node.js and browsers
+JavaScript
 
-Java[bitcoinj](https://bitcoinj.github.io/)A Java full-node client library
+[bcoin](http://bcoin.io/)    A modular and scalable full-node implementation with API
 
-[Bits of Proof \(BOP\)](https://bitsofproof.com/)A Java enterprise-class implementation of bitcoin
+[Bitcore](https://bitcore.io/)    Full node, API, and library by Bitpay
 
-Python[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)A Python bitcoin library, consensus library, and node by Peter Todd
+[BitcoinJS](https://github.com/bitcoinjs/bitcoinjs-lib)    A pure JavaScript Bitcoin library for node.js and browsers
 
-[pycoin](https://github.com/richardkiss/pycoin)A Python bitcoin library by Richard Kiss
+Java
 
-[pybitcointools](https://github.com/vbuterin/pybitcointools)A Python bitcoin library by Vitalik Buterin
+[bitcoinj](https://bitcoinj.github.io/)    A Java full-node client library
 
-Ruby[bitcoin-client](https://github.com/sinisterchipmunk/bitcoin-client)A Ruby library wrapper for the JSON-RPC API
+[Bits of Proof \(BOP\)](https://bitsofproof.com/)    A Java enterprise-class implementation of bitcoin
 
-Go[btcd](https://github.com/btcsuite/btcd)A Go language full-node bitcoin client
+Python
 
-Rust[rust-bitcoin](https://github.com/apoelstra/rust-bitcoin)Rust bitcoin library for serialization, parsing, and API calls
+[python-bitcoinlib](https://github.com/petertodd/python-bitcoinlib)    A Python bitcoin library, consensus library, and node by Peter Todd
 
-C\#[NBitcoin](https://github.com/MetacoSA/NBitcoin)Comprehensive bitcoin library for the .NET framework
+[pycoin](https://github.com/richardkiss/pycoin)    A Python bitcoin library by Richard Kiss
 
-Objective-C[CoreBitcoin](https://github.com/oleganza/CoreBitcoin)Bitcoin toolkit for ObjC and Swift更多的库存在各种其他编程语言，也会一直更新的。
+[pybitcointools](https://github.com/vbuterin/pybitcointools)    A Python bitcoin library by Vitalik Buterin
+
+Ruby
+
+[bitcoin-client](https://github.com/sinisterchipmunk/bitcoin-client)    A Ruby library wrapper for the JSON-RPC API
+
+Go
+
+[btcd](https://github.com/btcsuite/btcd)    A Go language full-node bitcoin client
+
+Rust
+
+[rust-bitcoin](https://github.com/apoelstra/rust-bitcoin)    Rust bitcoin library for serialization, parsing, and API calls
+
+C\#
+
+[NBitcoin](https://github.com/MetacoSA/NBitcoin)    Comprehensive bitcoin library for the .NET framework
+
+Objective-C
+
+[CoreBitcoin](https://github.com/oleganza/CoreBitcoin)    Bitcoin toolkit for ObjC and Swift
+
+更多的库存在各种其他编程语言，也会一直更新的。
 
