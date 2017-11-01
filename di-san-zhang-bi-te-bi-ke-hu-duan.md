@@ -41,9 +41,35 @@ $ cd bitcoin
 
 ### 3.1.2.1选择比特币核心版本
 
-默认情况下，本地副本将与最新的代码同步，这可能是不稳定的或Beta版的比特币。 在编译代码之前，先查看一个发布标签tag，选择一个特定的版本。 这将使本地副本与关键字标签所标识的代码库的特定快照同步。 开发人员使用标签来标记版本号的特定版本的代码。 首先，要找到可用的标签，我们使用git tag命令：$ git tagv0.1.5v0.1.6test1v0.10.0...v0.11.2v0.11.2rc1v0.12.0rc1v0.12.0rc2...
+默认情况下，本地副本将与最新的代码同步，这可能是不稳定的或Beta版的比特币。 在编译代码之前，先查看一个发布标签tag，选择一个特定的版本。 这将使本地副本与关键字标签所标识的代码库的特定快照同步。 开发人员使用标签来标记版本号的特定版本的代码。 首先，要找到可用的标签，我们使用git tag命令：
 
-标签列表显示所有发布的比特币版本。 根据惯例，用于测试的发布候选版本具有后缀“rc”。 可以在生产系统上运行的稳定版本没有后缀。 从上面的列表中，选择最高版本的版本，在编写时是v0.11.2。 要使本地代码与此版本同步，请使用git checkout命令：$ git checkout v0.11.2HEAD is now at 7e27892... Merge pull request \#6975您可以通过输入命令git status来确认您有所需的版本“checkout”：$ git statusHEAD detached at v0.11.2nothing to commit, working directory clean
+```
+$ git tag
+v0.1.5
+v0.1.6test1
+v0.10.0
+...
+v0.11.2
+v0.11.2rc1
+v0.12.0rc1
+v0.12.0rc2
+...
+```
+
+tag列表显示所有发布的比特币版本。 根据惯例，用于测试的发布候选版本具有后缀“rc”。 可以在生产系统上运行的稳定版本没有后缀。 从上面的列表中，选择最高版本的版本，在编写时是v0.11.2。 要使本地代码与此版本同步，请使用git checkout命令：
+
+```
+$ git checkout v0.11.2
+HEAD is now at 7e27892... Merge pull request #6975
+```
+
+您可以通过输入命令git status来确认您有所需的版本“checkout”：
+
+```
+$ git status
+HEAD detached at v0.11.2
+nothing to commit, working directory clean
+```
 
 ### 3.1.2.2配置构建比特币核心
 
