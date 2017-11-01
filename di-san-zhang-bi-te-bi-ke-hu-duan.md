@@ -75,37 +75,130 @@ nothing to commit, working directory clean
 
 源代码中包括文档，可以在多个文件中找到。通过在提示符下键入“more README.md”并使用空格键进入下一页，查看bitcoin目录中README.md中的主要文档。在本章中，我们将在Linux上构建命令行比特币客户端，也称为比特币（bitcoind）。在系统中查看编译bitcoind命令行客户端的说明，方法是输入“more doc / build-unix.md” 。可以在doc目录中找到macOS和Windows的替代说明，分别为build-osx.md或build-windows.md。
 
-仔细查看build前提条件，这些前提是build文档的第一部分。这些是在您开始编译比特币之前必须存在于系统上的库。如果缺少这些先决条件，build过程将失败并显示错误。如果发生这种情况是因为您缺失先决条件，则可以安装它，然后从您所在的地方恢复build过程。假设安装了先决条件，您可以通过使用autogen.sh脚本生成一组build脚本来启动build过程。**注意**Bitcoin Core build过程已经从0.9开始更改为使用autogen / configure / make系统。 旧版本使用简单的Makefile，与以下示例的方法略有不同。 因此要按照要编译的版本的说明进行操作。 在0.9中引入的autogen / configure / make可能是用于所有未来版本代码的build系统，并且是以下示例中演示的系统。
+仔细查看build前提条件，这些前提是build文档的第一部分。这些是在您开始编译比特币之前必须存在于系统上的库。如果缺少这些先决条件，build过程将失败并显示错误。如果发生这种情况是因为您缺失先决条件，则可以安装它，然后从您所在的地方恢复build过程。假设安装了先决条件，您可以通过使用autogen.sh脚本生成一组build脚本来启动build过程。
 
-$ ./autogen.sh...glibtoolize: copying file 'build-aux/m4/libtool.m4'glibtoolize: copying file 'build-aux/m4/ltoptions.m4'glibtoolize: copying file 'build-aux/m4/ltsugar.m4'glibtoolize: copying file 'build-aux/m4/ltversion.m4'...configure.ac:10: installing 'build-aux/compile'configure.ac:5: installing 'build-aux/config.guess'configure.ac:5: installing 'build-aux/config.sub'configure.ac:9: installing 'build-aux/install-sh'configure.ac:9: installing 'build-aux/missing'Makefile.am: installing 'build-aux/depcomp'...autogen.sh脚本创建一组自动配置脚本，它会询问系统以发现正确的设置，并确保您拥有编译代码所需的所有库。 其中最重要的是配置脚本，它提供了许多不同的选项来自定义构建过程。 键入“./configure --help”查看各种选项：$ ./configure --help\`configure' configures Bitcoin Core 0.11.2 to adapt to many kinds of systems.Usage: ./configure \[OPTION\]... \[VAR=VALUE\]......Optional Features:--disable-option-checking ignore unrecognized --enable/--with options--disable-FEATURE do not include FEATURE \(same as --enable-FEATURE=no\)--enable-FEATURE\[=ARG\] include FEATURE \[ARG=yes\]--enable-wallet enable wallet \(default is yes\)--with-gui\[=no\|qt4\|qt5\|auto\]...
+**注意**Bitcoin Core build过程已经从0.9开始更改为使用autogen / configure / make系统。 旧版本使用简单的Makefile，与以下示例的方法略有不同。 因此要按照要编译的版本的说明进行操作。 在0.9中引入的autogen / configure / make可能是用于所有未来版本代码的build系统，并且是以下示例中演示的系统。
+
+```
+$ ./autogen.sh
+...
+glibtoolize: copying file 'build-aux/m4/libtool.m4'
+glibtoolize: copying file 'build-aux/m4/ltoptions.m4'
+glibtoolize: copying file 'build-aux/m4/ltsugar.m4'
+glibtoolize: copying file 'build-aux/m4/ltversion.m4'
+...
+configure.ac:10: installing 'build-aux/compile'
+configure.ac:5: installing 'build-aux/config.guess'
+configure.ac:5: installing 'build-aux/config.sub'
+configure.ac:9: installing 'build-aux/install-sh'
+configure.ac:9: installing 'build-aux/missing'
+Makefile.am: installing 'build-aux/depcomp'
+...
+```
+
+autogen.sh脚本创建一组自动配置脚本，它会询问系统以发现正确的设置，并确保您拥有编译代码所需的所有库。 其中最重要的是配置脚本，它提供了许多不同的选项来自定义构建过程。 键入“./configure --help”查看各种选项：
+
+    $ ./configure --help
+    `configure' configures Bitcoin Core 0.11.2 to adapt to many kinds of systems.
+
+    Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+    ...
+    Optional Features:
+      --disable-option-checking  ignore unrecognized --enable/--with options
+      --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+      --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+
+      --enable-wallet         enable wallet (default is yes)
+
+      --with-gui[=no|qt4|qt5|auto]
+    ...
 
 配置脚本允许您通过使用--enable-FEATURE和--disable-FEATURE标志来启用或禁用bitcoind的某些功能，其中FEATURE由功能名称替换，如帮助输出中所列。 在本章中，我们将构建具有所有默认功能的bitcoind客户端。 我们不会使用配置标志，但您应该查看它们以了解可选功能是客户端的一部分。 如果您处于学术环境中，计算机实验室的限制可能需要您在主目录中安装应用程序（例如，使用--prefix = $ HOME）。
 
-以下是一些有用的选项，可以覆盖configure脚本的默认行为：--prefix=$HOMEThis overrides the default installation location \(which is /usr/local/\) for the resulting executable. Use $HOME to put everything in your home directory, or a different path.
+以下是一些有用的选项，可以覆盖configure脚本的默认行为：
 
---disable-walletThis is used to disable the reference wallet implementation.
+--prefix=$HOME
 
---with-incompatible-bdbIf you are building a wallet, allow the use of an incompatible version of the Berkeley DB library.
+这将覆盖生成的可执行文件的默认安装位置（它是/ usr / local /）。 使用$ HOME将所有内容放在您的主目录或不同的路径中。
 
---with-gui=noDon't build the graphical user interface, which requires the Qt library. This builds server and command-line bitcoin only.
+--disable-wallet
 
-接下来，运行configure脚本来自动发现所有必需的库，并为您的系统创建一个自定义的构建脚本：$ ./configurechecking build system type... x86\_64-unknown-linux-gnuchecking host system type... x86\_64-unknown-linux-gnuchecking for a BSD-compatible install... /usr/bin/install -cchecking whether build environment is sane... yeschecking for a thread-safe mkdir -p... /bin/mkdir -pchecking for gawk... gawkchecking whether make sets $\(MAKE\)... yes...\[many pages of configuration tests follow\]...$
+这用于禁用参考钱包的实现。
 
-如果一切顺利，configure命令将会以创建可定制的构建脚本结束。这些构建脚本允许我们编译bitcoind。如果有缺失的 库或是错误，configur命令将会以错误信息终止。如果出现了错误，可能是因为缺少库或是有不兼容的库。重新检查构 建文档，确认你已经安装缺失的必备条件。然后运行configure，看看错误是否消失了。
+--with-incompatible-bdb
+
+如果您正在构建钱包，请允许使用不兼容版本的Berkeley DB库。
+
+--with-gui=no
+
+不要构建图形用户界面，图形界面需要Qt库。 这只构建服务器和命令行。
+
+接下来，运行configure脚本来自动发现所有必需的库，并为您的系统创建一个自定义的构建脚本：
+
+```
+$ ./configure
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+...
+[many pages of configuration tests follow]
+...
+$
+```
+
+如果一切顺利，configure命令将会以创建可定制的构建脚本结束。这些构建脚本允许我们编译bitcoind。如果有缺失的库或是错误，configure命令将会以错误信息终止。如果出现了错误，可能是因为缺少库或是有不兼容的库。重新检查构建文档，确认你已经安装缺失的必备条件。然后运行configure，看看错误是否消失了。
 
 ### 3.1.2.3构建Bitcoin核心可执行文件
 
-下一步，你将编译源代码，这个过程根据CPU和内存资源不同，但一般可能需要1个小时完成。在编译的过程中，你应该过几秒或是几分钟看一下输出结果。如果出现了问题，你会看到错误。如果中断了，编译的过程可以在任何时候恢复。输入make命令就可以开始编译了：$ makeMaking all in srcCXX crypto/libbitcoinconsensus\_la-hmac\_sha512.loCXX crypto/libbitcoinconsensus\_la-ripemd160.loCXX crypto/libbitcoinconsensus\_la-sha1.loCXX crypto/libbitcoinconsensus\_la-sha256.loCXX crypto/libbitcoinconsensus\_la-sha512.loCXX libbitcoinconsensus\_la-hash.loCXX primitives/libbitcoinconsensus\_la-transaction.loCXX libbitcoinconsensus\_la-pubkey.loCXX script/libbitcoinconsensus\_la-bitcoinconsensus.loCXX script/libbitcoinconsensus\_la-interpreter.lo
+下一步，你将编译源代码，这个过程根据CPU和内存资源不同，但一般可能需要1个小时完成。在编译的过程中，你应该过几秒或是几分钟看一下输出结果。如果出现了问题，你会看到错误。如果中断了，编译的过程可以在任何时候恢复。输入make命令就可以开始编译了：
 
-\[... many more compilation messages follow ...\]
+```
+$ make
+Making all in src
+  CXX      crypto/libbitcoinconsensus_la-hmac_sha512.lo
+  CXX      crypto/libbitcoinconsensus_la-ripemd160.lo
+  CXX      crypto/libbitcoinconsensus_la-sha1.lo
+  CXX      crypto/libbitcoinconsensus_la-sha256.lo
+  CXX      crypto/libbitcoinconsensus_la-sha512.lo
+  CXX      libbitcoinconsensus_la-hash.lo
+  CXX      primitives/libbitcoinconsensus_la-transaction.lo
+  CXX      libbitcoinconsensus_la-pubkey.lo
+  CXX      script/libbitcoinconsensus_la-bitcoinconsensus.lo
+  CXX      script/libbitcoinconsensus_la-interpreter.lo
+
+[... many more compilation messages follow ...]
 
 $
+```
 
-如果一切顺利，bitcoind现在已经编译完成。最后一步就是通过sudo make install 命令，安装 bitcoind 可执行文件到你的系统路径下，可能会提示您输入用户密码，因为此步骤需要管理员权限：$ sudo make installPassword:Making install in src../build-aux/install-sh -c -d '/usr/local/lib'libtool: install: /usr/bin/install -c bitcoind /usr/local/bin/bitcoindlibtool: install: /usr/bin/install -c bitcoin-cli /usr/local/bin/bitcoin-clilibtool: install: /usr/bin/install -c bitcoin-tx /usr/local/bin/bitcoin-tx...$
+如果一切顺利，bitcoind现在已经编译完成。最后一步就是通过sudo make install 命令，安装 bitcoind 可执行文件到你的系统路径下，可能会提示您输入用户密码，因为此步骤需要管理员权限：
 
-bitcoind 默认的安装位置是/usr/local/bin。你可以通过询问系统下面2个可执行文件的路径，来确认bitcoin是否安装成功。$ which bitcoind/usr/local/bin/bitcoind
+```
+$ sudo make install
+Password:
+Making install in src
+ ../build-aux/install-sh -c -d '/usr/local/lib'
+libtool: install: /usr/bin/install -c bitcoind /usr/local/bin/bitcoind
+libtool: install: /usr/bin/install -c bitcoin-cli /usr/local/bin/bitcoin-cli
+libtool: install: /usr/bin/install -c bitcoin-tx /usr/local/bin/bitcoin-tx
+...
+$
+```
 
-$ which bitcoin-cli/usr/local/bin/bitcoin-cli
+bitcoind 默认的安装位置是/usr/local/bin。你可以通过询问系统下面2个可执行文件的路径，来确认bitcoin是否安装成功。
+
+```
+$ which bitcoind
+/usr/local/bin/bitcoind
+
+$ which bitcoin-cli
+/usr/local/bin/bitcoin-cli
+```
 
 ### 3.1.2.4运行比特币核心节点
 
