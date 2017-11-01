@@ -253,7 +253,7 @@ rpcuser=bitcoinrpc
 rpcpassword=CHANGE_THIS
 ```
 
-除了rpcuser和rpcpassword选项，Bitcoin Core还提供了100多个配置选项，可以修改网络节点的行为，区块链的存储以及其操作的许多其他方面。 
+除了rpcuser和rpcpassword选项，Bitcoin Core还提供了100多个配置选项，可以修改网络节点的行为，区块链的存储以及其操作的许多其他方面。
 
 要查看这些选项的列表，请运行bitcoind --help：
 
@@ -322,242 +322,247 @@ minrelaytxfee
 
 设置您将继续的最低费用交易。 低于此值，交易被视为零费用。 在内存受限的节点上使用它来减少内存中交易池的大小。
 
-_**交易数据库索引和txindex选项**_默认情况下，Bitcoin Core构建一个仅包含与用户钱包有关的交易的数据库。 如果您想要使用诸如getrawtransaction（参见[探索和解码交易](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#exploring_and_decoding_transanctions)\)之类的命令访问任何交易，则需要配置Bitcoin Core以构建完整的交易索引，这可以通过txindex选项来实现。 在Bitcoin Core配置文件中设置txindex = 1。 如果不想一开始设置此选项，后期再想设置为完全索引，则需要使用-reindex选项重新启动bitcoind，并等待它重建索引。下面的完整索引节点的例子配置显示了如何将上述选项与完全索引节点组合起来，作为比特币应用程序的API后端运行。例3-1完整索引节点的例子alertnotify=myemailscript.sh "Alert: %s"datadir=/lotsofspace/bitcointxindex=1rpcuser=bitcoinrpcrpcpassword=CHANGE\_THIS
+_**交易数据库索引和txindex选项**_
 
-下面是小型服务器资源不足配置示例。例3-2小型服务器资源不足配置示例alertnotify=myemailscript.sh "Alert: %s"maxconnections=15prune=5000minrelaytxfee=0.0001maxmempool=200maxreceivebuffer=2500maxsendbuffer=500rpcuser=bitcoinrpcrpcpassword=CHANGE\_THIS
+默认情况下，Bitcoin Core构建一个仅包含与用户钱包有关的交易的数据库。 如果您想要使用诸如getrawtransaction（参见[探索和解码交易](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/ch03.asciidoc#exploring_and_decoding_transanctions)\)之类的命令访问任何交易，则需要配置Bitcoin Core以构建完整的交易索引，这可以通过txindex选项来实现。 在Bitcoin Core配置文件中设置txindex = 1。 如果不想一开始设置此选项，后期再想设置为完全索引，则需要使用-reindex选项重新启动bitcoind，并等待它重建索引。
 
-编辑配置文件并设置最符合您需求的选项后，可以使用此配置测试 bitcoind。 运行Bitcoin Core，使用选项printtoconsole在前台运行输出到控制台：$ bitcoind -printtoconsole
+下面的完整索引节点的例子配置显示了如何将上述选项与完全索引节点组合起来，作为比特币应用程序的API后端运行。
 
-Bitcoin version v0.11.20.0Using OpenSSL version OpenSSL 1.0.2e 3 Dec 2015Startup time: 2015-01-02 19:56:17Using data directory /tmp/bitcoinUsing config file /tmp/bitcoin/bitcoin.confUsing at most 125 connections \(275 file descriptors available\)Using 2 threads for script verificationscheduler thread startHTTP: creating work queue of depth 16No rpcpassword set - using random cookie authenticationGenerated RPC authentication cookie /tmp/bitcoin/.cookieHTTP: starting 4 worker threadsBound to \[::\]:8333Bound to 0.0.0.0:8333Cache configuration:
+例3-1完整索引节点的例子
 
+```
+alertnotify=myemailscript.sh "Alert: %s"
+datadir=/lotsofspace/bitcoin
+txindex=1
+rpcuser=bitcoinrpc
+rpcpassword=CHANGE_THIS
+```
+
+下面是小型服务器资源不足配置示例。
+
+例3-2小型服务器资源不足配置示例
+
+```
+alertnotify=myemailscript.sh "Alert: %s"
+maxconnections=15
+prune=5000
+minrelaytxfee=0.0001
+maxmempool=200
+maxreceivebuffer=2500
+maxsendbuffer=500
+rpcuser=bitcoinrpc
+rpcpassword=CHANGE_THIS
+```
+
+编辑配置文件并设置最符合您需求的选项后，可以使用此配置测试 bitcoind。 运行Bitcoin Core，使用选项printtoconsole在前台运行输出到控制台：
+
+```
+$ bitcoind -printtoconsole
+
+Bitcoin version v0.11.20.0
+Using OpenSSL version OpenSSL 1.0.2e 3 Dec 2015
+Startup time: 2015-01-02 19:56:17
+Using data directory /tmp/bitcoin
+Using config file /tmp/bitcoin/bitcoin.conf
+Using at most 125 connections (275 file descriptors available)
+Using 2 threads for script verification
+scheduler thread start
+HTTP: creating work queue of depth 16
+No rpcpassword set - using random cookie authentication
+Generated RPC authentication cookie /tmp/bitcoin/.cookie
+HTTP: starting 4 worker threads
+Bound to [::]:8333
+Bound to 0.0.0.0:8333
+Cache configuration:
 * Using 2.0MiB for block index database
-
 * Using 32.5MiB for chain state database
+* Using 65.5MiB for in-memory UTXO set
+init message: Loading block index...
+Opening LevelDB in /tmp/bitcoin/blocks/index
+Opened LevelDB successfully
 
-* Using 65.5MiB for in-memory UTXO setinit message: Loading block index...Opening LevelDB in /tmp/bitcoin/blocks/indexOpened LevelDB successfully
-
-\[... more startup messages ...\]一旦您确信正在加载正确的设置并按预期运行，您可以按Ctrl-C中断进程。要在后台运行Bitcoin Core作为进程，请使用守护程序选项启动它，如bitcoind -daemon。要监视比特币节点的进度和运行状态，请使用命令bitcoin-cli getinfo：$ bitcoin-cli getinfo{
-
-```
-"version" : 110200,
-
-
-"protocolversion" : 70002,
-
-
-"blocks" : 396328,
-
-
-"timeoffset" : 0,
-
-
-"connections" : 15,
-
-
-"proxy" : "",
-
-
-"difficulty" : 120033340651.23696899,
-
-
-"testnet" : false,
-
-
-"relayfee" : 0.00010000,
-
-
-"errors" : ""
+[... more startup messages ...]
 ```
 
+一旦您确信正在加载正确的设置并按预期运行，您可以按Ctrl-C中断进程。要在后台运行Bitcoin Core作为进程，请使用守护程序选项启动它，如bitcoind -daemon。要监视比特币节点的进度和运行状态，请使用命令bitcoin-cli getinfo：
+
+```
+$ bitcoin-cli getinfo
+{
+    "version" : 110200,
+    "protocolversion" : 70002,
+    "blocks" : 396328,
+    "timeoffset" : 0,
+    "connections" : 15,
+    "proxy" : "",
+    "difficulty" : 120033340651.23696899,
+    "testnet" : false,
+    "relayfee" : 0.00010000,
+    "errors" : ""
 }
+```
 
-这显示运行Bitcoin Core版本0.11.2的节点，块链接高度为396328个块和15个活动网络连接。一旦您对所选择的配置选项感到满意，您应该将bitcoin添加到操作系统中的启动脚本中，以使其连续运行，并在操作系统重新启动时自动启动。 您可以在contrib / init下的bitcoin的源目录中的各种操作系统和README.md文件中找到一些示例启动脚本，显示哪个系统使用哪个脚本。
+这显示运行Bitcoin Core版本0.11.2的节点，块链接高度为396328个块和15个活动网络连接。
+
+一旦您对所选择的配置选项感到满意，您应该将bitcoin添加到操作系统中的启动脚本中，以使其连续运行，并在操作系统重新启动时自动启动。 您可以在contrib / init下的bitcoin的源目录中的各种操作系统和README.md文件中找到一些示例启动脚本，显示哪个系统使用哪个脚本。
 
 # 3.2 通过命令行使用比特币核心的JSON-RPC API接口
 
-比特币核心客户端实现了JSON-RPC接口，这个接口也可以通过命令行帮助程序bitcoin-cli访问。命令行可以使用API进 行编程，让我们有能力进行交互实验。开始前，调用help命令查看可用的比特币RPC命令列表：$ bitcoin-cli helpaddmultisigaddress nrequired \["key",...\] \( "account" \)addnode "node" "add\|remove\|onetry"backupwallet "destination"createmultisig nrequired \["key",...\]createrawtransaction \[{"txid":"id","vout":n},...\] {"address":amount,...}decoderawtransaction "hexstring"......verifymessage "bitcoinaddress" "signature" "message"walletlockwalletpassphrase "passphrase" timeoutwalletpassphrasechange "oldpassphrase" "newpassphrase"
+比特币核心客户端实现了JSON-RPC接口，这个接口也可以通过命令行帮助程序bitcoin-cli访问。命令行可以使用API进行编程，让我们有能力进行交互实验。开始前，调用help命令查看可用的比特币RPC命令列表：
 
-这些命令中的每一个可能需要多个参数。 要获得更多帮助，详细说明和参数信息，请在帮助后添加命令名称。 例如，要查看getblockhash RPC命令的帮助：$ bitcoin-cli help getblockhashgetblockhash index
+```
+$ bitcoin-cli help
+addmultisigaddress nrequired ["key",...] ( "account" )
+addnode "node" "add|remove|onetry"
+backupwallet "destination"
+createmultisig nrequired ["key",...]
+createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,...}
+decoderawtransaction "hexstring"
+...
+...
+verifymessage "bitcoinaddress" "signature" "message"
+walletlock
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"
+```
+
+这些命令中的每一个可能需要多个参数。 要获得更多帮助，详细说明和参数信息，请在帮助后添加命令名称。 例如，要查看getblockhash RPC命令的帮助：
+
+```
+$ bitcoin-cli help getblockhash
+getblockhash index
 
 Returns hash of block in best-block-chain at index provided.
 
 Arguments:
+1. index         (numeric, required) The block index
 
-1. index \(numeric, required\) The block index
-
-Result:"hash" \(string\) The block hash
+Result:
+"hash"         (string) The block hash
 
 Examples:
+> bitcoin-cli getblockhash 1000
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:8332/
+```
 
-> bitcoin-cli getblockhash 1000curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhash", "params": \[1000\] }' -H 'content-type: text/plain;'[http://127.0.0.1:8332/](http://127.0.0.1:8332/)在帮助信息的最后，您将看到RPC命令的两个示例，使用bitcoin-cli helper或HTTP客户端的curl。 这些例子演示如何调用命令。 复制第一个示例并查看结果：$ bitcoin-cli getblockhash 100000000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09结果是一个区块哈希，这在下面的章节中有更详细的描述。 但是现在，该命令应该在您的系统上返回相同的结果，表明您的Bitcoin Core节点正在运行，正在接受命令，并且有关于块1000的信息返回给您。
+在帮助信息的最后，您将看到RPC命令的两个示例，使用bitcoin-cli helper或HTTP客户端的curl。 这些例子演示如何调用命令。 复制第一个示例并查看结果：
+
+```
+$ bitcoin-cli getblockhash 1000
+00000000c937983704a73af28acdec37b049d214adbda81d7e2a3dd146f6ed09
+```
+
+结果是一个区块哈希，这在下面的章节中有更详细的描述。 但是现在，该命令应该在您的系统上返回相同的结果，表明您的Bitcoin Core节点正在运行，正在接受命令，并且有关于块1000的信息返回给您。
 
 在下一节中，我们将演示一些非常有用的RPC命令及其预期输出。
 
 ## 3.2.1 获得比特币核心客户端状态的信息
 
-命令： getinfo比特币 getinfo RPC命令显示关于比特币网络节点、钱包、区块链数据库状态的基础信息。使用 bitcoin-cli 运行它：$ bitcoin-cli getinfo{
+命令： getinfo
+
+比特币 getinfo RPC命令显示关于比特币网络节点、钱包、区块链数据库状态的基础信息。使用 bitcoin-cli 运行它：
 
 ```
-"version" : 110200,
-
-
-"protocolversion" : 70002,
-
-
-"blocks" : 396367,
-
-
-"timeoffset" : 0,
-
-
-"connections" : 15,
-
-
-"proxy" : "",
-
-
-"difficulty" : 120033340651.23696899,
-
-
-"testnet" : false,
-
-
-"relayfee" : 0.00010000,
-
-
-"errors" : ""
-```
-
+$ bitcoin-cli getinfo
+{
+    "version" : 110200,
+    "protocolversion" : 70002,
+    "blocks" : 396367,
+    "timeoffset" : 0,
+    "connections" : 15,
+    "proxy" : "",
+    "difficulty" : 120033340651.23696899,
+    "testnet" : false,
+    "relayfee" : 0.00010000,
+    "errors" : ""
 }
+```
 
 数据以JavaScript对象表示法（JSON）返回，这是一种格式，可以轻松地被所有编程语言“消费”，但也是非常人性化的。 在这些数据中，我们看到比特币软件客户端（110200）和比特币协议（70002）的版本号。 我们看到当前的块高度，显示了这个客户端知道了多少块（396367）。 我们还会看到有关比特币网络和与此客户端相关的设置的各种统计信息。
 
-**提示**比特币特客户端“赶上”当前的blockchain高度需要一些时间，因为它从其他bitcoin客户端下载块。 您可以使用getinfo检查其进度，以查看已知块的数量。
+**提示 **比特币特客户端“赶上”当前的blockchain高度需要一些时间，因为它从其他bitcoin客户端下载块。 您可以使用getinfo检查其进度，以查看已知块的数量。
 
 ### 3.2.1 .1探索和解码交易
 
-命令：getrawtransaction，decodeawtransaction在买咖啡的故事中，Alice从鲍勃咖啡厅买了一杯咖啡。 她的交易记录在交易ID（txid）0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2的封锁上。 我们使用API通过传递交易ID作为参数来检索和检查该交易：$ bitcoin-cli getrawtransaction 0627052b6f28912f2703066a912ea577f2ce4da4caa5a↵5fbd8a57286c345c2f2
+命令：getrawtransaction，decodeawtransaction
 
-0100000001186f9f998a5aa6f048e51dd8419a14d8a0f1a8a2836dd734d2804fe65fa35779000↵000008b483045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1deccbb6498c75c4↵ae24cb02204b9f039ff08df09cbe9f6addac960298cad530a863ea8f53982c09db8f6e3813014↵10484ecc0d46f1918b30928fa0e4ed99f16a0fb4fde0735e7ade8416ab9fe423cc54123363767↵89d172787ec3457eee41c04f4938de5cc17b4a10fa336a8d752adfffffffff0260e3160000000↵0001976a914ab68025513c3dbd2f7b92a94e0581f5d50f654e788acd0ef8000000000001976a9↵147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac00000000
+在买咖啡的故事中，Alice从Bob咖啡厅买了一杯咖啡。 她的交易记录在交易ID（txid）0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2的封锁上。 我们使用API通过传递交易ID作为参数来检索和检查该交易：
 
-**提示**交易ID在交易被确认之前不具有权威性。 在块链中缺少交易哈希并不意味着交易未被处理。 这被称为“交易可扩展性”，因为在块中确认之前可以修改交易哈希。 确认后，txid是不可变的和权威的。
+```
+$ bitcoin-cli getrawtransaction 0627052b6f28912f2703066a912ea577f2ce4da4caa5a↵
+5fbd8a57286c345c2f2
+
+0100000001186f9f998a5aa6f048e51dd8419a14d8a0f1a8a2836dd734d2804fe65fa35779000↵
+000008b483045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1deccbb6498c75c4↵
+ae24cb02204b9f039ff08df09cbe9f6addac960298cad530a863ea8f53982c09db8f6e3813014↵
+10484ecc0d46f1918b30928fa0e4ed99f16a0fb4fde0735e7ade8416ab9fe423cc54123363767↵
+89d172787ec3457eee41c04f4938de5cc17b4a10fa336a8d752adfffffffff0260e3160000000↵
+0001976a914ab68025513c3dbd2f7b92a94e0581f5d50f654e788acd0ef8000000000001976a9↵
+147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac00000000
+```
+
+**提示**交易ID在交易被确认之前不具有权威性。 在区块链中缺少交易哈希并不意味着交易未被处理。 这被称为“交易可扩展性”，因为在块中确认之前可以修改交易哈希。 确认后，txid是不可改变的和权威的。
 
 命令getrawtransaction以十六进制返回顺序交易。 为了解码，我们使用decodeawtransaction命令，将十六进制数据作为参数传递。 您可以复制getrawtransaction返回的十六进制，并将其作为参数粘贴到decodeawtransaction中：
 
-$ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵a0f1a8a2836dd734d2804fe65fa35779000000008b483045022100884d142d86652a3f47ba474↵6ec719bbfbd040a570b1deccbb6498c75c4ae24cb02204b9f039ff08df09cbe9f6addac960298↵cad530a863ea8f53982c09db8f6e381301410484ecc0d46f1918b30928fa0e4ed99f16a0fb4fd↵e0735e7ade8416ab9fe423cc5412336376789d172787ec3457eee41c04f4938de5cc17b4a10fa↵336a8d752adfffffffff0260e31600000000001976a914ab68025513c3dbd2f7b92a94e0581f5↵d50f654e788acd0ef8000000000001976a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a8↵88ac00000000
-
-{"txid": "0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2","size": 258,"version": 1,"locktime": 0,"vin": \[
+```
+$ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵
+a0f1a8a2836dd734d2804fe65fa35779000000008b483045022100884d142d86652a3f47ba474↵
+6ec719bbfbd040a570b1deccbb6498c75c4ae24cb02204b9f039ff08df09cbe9f6addac960298↵
+cad530a863ea8f53982c09db8f6e381301410484ecc0d46f1918b30928fa0e4ed99f16a0fb4fd↵
+e0735e7ade8416ab9fe423cc5412336376789d172787ec3457eee41c04f4938de5cc17b4a10fa↵
+336a8d752adfffffffff0260e31600000000001976a914ab68025513c3dbd2f7b92a94e0581f5↵
+d50f654e788acd0ef8000000000001976a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a8↵
+88ac00000000
+```
 
 ```
 {
-
-
-  "txid": "7957a35fe64f80d234d76d83a2...8149a41d81de548f0a65a8a999f6f18",
-
-
-  "vout": 0,
-
-
-  "scriptSig": {
-
-
-  "asm":"3045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1decc...",
-
-
-  "hex":"483045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1de..."
-
-
-  },
-
-
-  "sequence": 4294967295
-
-
+  "txid": "0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2",
+  "size": 258,
+  "version": 1,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "7957a35fe64f80d234d76d83a2...8149a41d81de548f0a65a8a999f6f18",
+      "vout": 0,
+      "scriptSig": {
+        "asm":"3045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1decc...",
+        "hex":"483045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1de..."
+      },
+      "sequence": 4294967295
+    }
+  ],
+  "vout": [
+    {
+      "value": 0.01500000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 ab68...5f654e7 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914ab68025513c3dbd2f7b92a94e0581f5d50f654e788ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
+        ]
+      }
+    },
+    {
+      "value": 0.08450000,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_DUP OP_HASH160 7f9b1a...025a8 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
+        "reqSigs": 1,
+        "type": "pubkeyhash",
+        "addresses": [
+          "1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK"
+        ]
+      }
+    }
+  ]
 }
 ```
-
-\],"vout": \[
-
-```
-{
-
-
-  "value": 0.01500000,
-
-
-  "n": 0,
-
-
-  "scriptPubKey": {
-
-
-  "asm": "OP_DUP OP_HASH160 ab68...5f654e7 OP_EQUALVERIFY OP_CHECKSIG",
-
-
-  "hex": "76a914ab68025513c3dbd2f7b92a94e0581f5d50f654e788ac",
-
-
-  "reqSigs": 1,
-
-
-  "type": "pubkeyhash",
-
-
-  "addresses": [
-
-
-  "1GdK9UzpHBzqzX2A9JFP3Di4weBwqgmoQA"
-
-
-  ]
-
-
-  }
-
-
-},
-
-
-{
-
-
-  "value": 0.08450000,
-
-
-  "n": 1,
-
-
-  "scriptPubKey": {
-
-
-  "asm": "OP_DUP OP_HASH160 7f9b1a...025a8 OP_EQUALVERIFY OP_CHECKSIG",
-
-
-  "hex": "76a9147f9b1a7fb68d60c536c2fd8aeaa53a8f3cc025a888ac",
-
-
-  "reqSigs": 1,
-
-
-  "type": "pubkeyhash",
-
-
-  "addresses": [
-
-
-  "1Cdid9KFAaatwczBwBttQcwXYCpvK8h7FK"
-
-
-  ]
-
-
-  }
-
-
-}
-```
-
-\]}
 
 交易解码展示这笔交易的所有成分，包括交易的输入及输出。在这个例子中，我们可以看到这笔给我们新地址存入 50mBTC的交易使用了一个输入并且产生两个输出。这笔交易的输入是前一笔确认交易的输出（展示位以d3c7开头的 vin txid）。两个输出则是50mBTC存入额度及返回给发送者的找零。
 
@@ -565,7 +570,16 @@ $ bitcoin-cli decoderawtransaction 0100000001186f9f998a5aa6f048e51dd8419a14d8↵
 
 ## 3.2.2 探索区块
 
-命令： getblock 、 getblockhash探索区块类似于探索交易。 但是，块可以由块高度或块哈希引用。 首先，让我们找到一个块的高度。 在买咖啡故事中，我们看到Alice的交易已被包含在框277316中。我们使用getblockhash命令，它将块高度作为参数，并返回该块的块哈希值：$ bitcoin-cli getblockhash 2773160000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4既然我们知道我们的交易在哪个区块中，我们可以使用getblock命令，并把区块哈希值作为参数来查询对应的区块：
+命令： getblock 、 getblockhash
+
+探索区块类似于探索交易。 但是，块可以由块高度或块哈希引用。 首先，让我们找到一个块的高度。 在买咖啡故事中，我们看到Alice的交易已被包含在框277316中。我们使用getblockhash命令，它将块高度作为参数，并返回该块的块哈希值：
+
+```
+$ bitcoin-cli getblockhash 277316
+0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4
+```
+
+既然我们知道我们的交易在哪个区块中，我们可以使用getblock命令，并把区块哈希值作为参数来查询对应的区块：
 
 $ bitcoin-cli getblock 0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b3↵1b2cc7bdc4{"hash": "0000000000000001b6b9a13b095e96db41c4a928b97ef2d944a9b31b2cc7bdc4","confirmations": 37371,"size": 218629,"height": 277316,"version": 2,"merkleroot": "c91c008c26e50763e9f548bb8b2fc323735f73577effbc55502c51eb4cc7cf2e","tx": \[
 
