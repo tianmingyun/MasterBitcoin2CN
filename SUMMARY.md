@@ -18,4 +18,5 @@
 * [附录2：Bitcore](fu-lu-2-bitcore.md)
 * [附录3：Bitcoin Explorer（bx）命令](fu-lu-3-bitcoin-explorer-bx-ff09-ming-ling.md)
 * [附录4：pycoin库、实⽤密钥程序ku和交易程序tx](fu-lu-4-pycoin-ku-3001-shi-2f64-mi-yao-cheng-xu-ku-he-jiao-yi-cheng-xu-tx.md)
+* [附录5 交易脚本的操作符、常量和符号](fu-lu-5-jiao-yi-jiao-ben-de-cao-zuo-fu-3001-chang-liang-he-fu-hao.md)
 
