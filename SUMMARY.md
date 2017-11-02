@@ -15,4 +15,5 @@
 * [第十二章比特币应用](di-shi-er-zhang-bi-te-bi-ying-yong.md)
 * [目录](mu-lu.md)
 * [附录1：比特币改进提案（BIP）](fu-lu-1-ff1a-bi-te-bi-gai-jin-ti-an-ff08-bip.md)
+* [附录2：Bitcore](fu-lu-2-bitcore.md)
 
