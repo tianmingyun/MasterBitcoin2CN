@@ -2,7 +2,16 @@
 
 原文参见 [Appendix A: Segregated Witness](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/appdx-segwit.asciidoc)
 
-隔离见证Segregated Witness（segwit）
+隔离见证Segregated Witness（通常简写为SegWit）是对比特币软件提出的一种共识规则和网络协议的更新，通过BIP-9软分叉技术，计划在2017年中期激活。
+
+在密码学中，术语“见证”用于描述加密难题的解决方案。在比特币术语中，见证含有一个加密条件放在一个未被使用的交易输出（UTXO）上的意思。
+
+在比特币的背景下，数字签名是一种见证，但见证更为广泛，可以满足强加在UTXO上的条件并解锁UTXO的支出。 术语“见证”是“解锁脚本”或“scriptSig”的一般术语。
+
+在segwit之前，交易中的每一个输入都跟随着解锁它的见证数据。 见证数据作为每个输入的一部分嵌入在事务中。术语隔离见证Segregated Witness，或者简写为segwit，只是意味着分离特定输出的签名或解锁脚本。可以把 "separate scriptSig," 或者 “separate signature” 看成是最简单的形式。
+
+因此，隔离见证是对比特币的架构性更改，旨在将交易的scriptSig（解锁脚本）字段中的见证数据移动到与交易相伴随的单独的见证数据结构中。客户可以请求具有或不附带见证数据的交易数据。
+
 
 
 ### 参考
