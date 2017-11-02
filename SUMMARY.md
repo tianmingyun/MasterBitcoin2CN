@@ -17,4 +17,5 @@
 * [附录1：比特币改进提案（BIP）](fu-lu-1-ff1a-bi-te-bi-gai-jin-ti-an-ff08-bip.md)
 * [附录2：Bitcore](fu-lu-2-bitcore.md)
 * [附录3：Bitcoin Explorer（bx）命令](fu-lu-3-bitcoin-explorer-bx-ff09-ming-ling.md)
+* [附录4：pycoin库、实⽤密钥程序ku和交易程序tx](fu-lu-4-pycoin-ku-3001-shi-2f64-mi-yao-cheng-xu-ku-he-jiao-yi-cheng-xu-tx.md)
 
