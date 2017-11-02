@@ -1,12 +1,12 @@
 最初由Richard Kiss编写和维护的Python库pycoin是一个基于Python的库，支持对比特币密钥和交易进行操作，甚至支持足够的脚本语言来适当地处理非标准交易。
 
-pycoin库支持Python 2（2.7.x）和Python 3（3.3之后），并附带一些方便的命令行实用程序ku和tx。
+pycoin库支持Python 2（2.7.x）和Python 3（3.3之后），并附带一些方便的命令行实用程序ku和tx。
 
 # 实用工具（KU）
 
 命令行实用程序ku（“密钥实用程序”）是用于操纵密钥的瑞士军刀。 它支持BIP-32键，WIF和地址（比特币和代币）。 以下是一些例子。
 
-使用GPG和/ dev / random的默认熵源创建一个BIP-32密钥：
+使用GPG和/ dev / random的默认熵源创建一个BIP-32密钥：
 
 ```
 $ ku create
@@ -43,7 +43,8 @@ Bitcoin address : 1FNNRQ5fSv1wBi5gyfVBs2rkNheMGt86sp
 
 从密码短语创建一个BIP-32密钥：
 
-**警告** 这个例子中的密码很容易猜到。
+**警告**  
+ 这个例子中的密码很容易猜到。
 
 ```
 $ ku P:foo
@@ -188,7 +189,7 @@ $ ku -a xprv9xWkBDfyBXmZsA85GyWj9uYPyoQv826YAadKWMaaEosNrFBKgj2TqWuiWY3zuqxYGpHf
 
 是的，看起来很熟悉
 
-从秘密指数：
+从秘密指数：
 
 ```
 $ ku 1
@@ -239,6 +240,148 @@ Litecoin address : LVuDpNCSSj6pQ7t9Pv6d6sUkLKoqDEVUnJ
 ```
 
 狗狗币WIF:
+
+```
+$ ku -nD -W 1
+QNcdLVw8fHkixm6NNyN6nVwxKek4u7qrioRbQmjxac5TVoTtZuot
+```
+
+从公共对（在Testnet）：
+
+```
+$ ku -nT 55066263022277343669578718895168534326250603453777594175500187360389116729240,even
+
+input                   : 550662630222773436695787188951685343262506034537775941755001873603
+                            89116729240,even
+network                 : Bitcoin testnet
+public pair x           : 55066263022277343669578718895168534326250603453777594175500187360389116729240
+public pair y           : 32670510020758816978083085130507043184471273380659243275938904335757337482424
+ x as hex               : 79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ y as hex               : 483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8
+y parity                : even
+key pair as sec         : 0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+ uncompressed           : 0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798
+                            483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8
+hash160                 : 751e76e8199196d454941c45d1b3a323f1433bd6
+ uncompressed           : 91b24bf9f5288532960ac687abb035127b1d28a5
+Bitcoin testnet address : mrCDrCybB6J1vRfbwM5hemdJz73FwDBC8r
+ uncompressed           : mtoKs9V381UAhUia3d7Vb9GNak8Qvmcsme
+```
+
+从hash160:
+
+```
+$ ku 751e76e8199196d454941c45d1b3a323f1433bd6
+
+input           : 751e76e8199196d454941c45d1b3a323f1433bd6
+network         : Bitcoin
+hash160         : 751e76e8199196d454941c45d1b3a323f1433bd6
+Bitcoin address : 1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH
+```
+
+作为狗狗币地址:
+
+```
+$ ku -nD 751e76e8199196d454941c45d1b3a323f1433bd6
+
+input            : 751e76e8199196d454941c45d1b3a323f1433bd6
+network          : Dogecoin
+hash160          : 751e76e8199196d454941c45d1b3a323f1433bd6
+Dogecoin address : DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE
+```
+
+# 交易实用程序（TX）
+
+命令行实用程序tx将以人类可读的形式显示交易，从pycoin的交易缓存或Web服务获取基础交易（当前支持blockchain.info和biteasy.com），合并交易，添加或删除输入或输出，以及签署交易。
+
+以下是一些例子。
+
+查看着名的“皮萨”交易：
+
+```
+$ tx 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a
+warning: consider setting environment variable PYCOIN_CACHE_DIR=~/.pycoin_cache to cache transactions fetched via web services
+warning: no service providers found for get_tx; consider setting environment variable PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
+usage: tx [-h] [-t TRANSACTION_VERSION] [-l LOCK_TIME] [-n NETWORK] [-a]
+          [-i address] [-f path-to-private-keys] [-g GPG_ARGUMENT]
+          [--remove-tx-in tx_in_index_to_delete]
+          [--remove-tx-out tx_out_index_to_delete] [-F transaction-fee] [-u]
+          [-b BITCOIND_URL] [-o path-to-output-file]
+          argument [argument ...]
+tx: error: can't find Tx with id 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a
+```
+
+哎呀！ 我们没有设置Web服务。 现在我们来做：
+
+```
+$ PYCOIN_CACHE_DIR=~/.pycoin_cache
+$ PYCOIN_SERVICE_PROVIDERS=BLOCKR_IO:BLOCKCHAIN_INFO:BITEASY:BLOCKEXPLORER
+$ export PYCOIN_CACHE_DIR PYCOIN_SERVICE_PROVIDERS
+```
+
+这不是自动完成的，所以命令行工具不会泄漏潜在的关于您对第三方网站感兴趣的交易的私人信息。 如果您不在乎，可以将这些行放入.profile。
+
+让我们再试一次：
+
+```
+$ tx 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a
+Version:  1  tx hash 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a  159 bytes
+TxIn count: 1; TxOut count: 1
+Lock time: 0 (valid anytime)
+Input:
+  0:                          (unknown) from 1e133f7de73ac7d074e2746a3d6717dfc99ecaa8e9f9fade2cb8b0b20a5e0441:0
+Output:
+  0: 1CZDM6oTttND6WPdt3D6bydo7DYKzd9Qik receives 10000000.00000 mBTC
+Total output 10000000.00000 mBTC
+including unspents in hex dump since transaction not fully signed
+010000000141045e0ab2b0b82cdefaf9e9a8ca9ec9df17673d6a74e274d0c73ae77d3f131e000000004a493046022100a7f26eda874931999c90f87f01ff1ffc76bcd058fe16137e0e63fdb6a35c2d78022100a61e9199238eb73f07c8f209504c84b80f03e30ed8169edd44f80ed17ddf451901ffffffff010010a5d4e80000001976a9147ec1003336542cae8bded8909cdd6b5e48ba0ab688ac00000000
+
+** can't validate transaction as source transactions missing
+```
+
+出现最后一行是为了验证交易的签名，您技术上需要源代码交易。 所以我们来添加-a来增加源信息的交易：
+
+```
+$ tx -a 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a
+warning: transaction fees recommendations casually calculated and estimates may be incorrect
+warning: transaction fee lower than (casually calculated) expected value of 0.1 mBTC, transaction might not propogate
+Version:  1  tx hash 49d2adb6e476fa46d8357babf78b1b501fd39e177ac7833124b3f67b17c40c2a  159 bytes
+TxIn count: 1; TxOut count: 1
+Lock time: 0 (valid anytime)
+Input:
+  0: 17WFx2GQZUmh6Up2NDNCEDk3deYomdNCfk from 1e133f7de73ac7d074e2746a3d6717dfc99ecaa8e9f9fade2cb8b0b20a5e0441:0 10000000.00000 mBTC  sig ok
+Output:
+  0: 1CZDM6oTttND6WPdt3D6bydo7DYKzd9Qik receives 10000000.00000 mBTC
+Total input  10000000.00000 mBTC
+Total output 10000000.00000 mBTC
+Total fees        0.00000 mBTC
+
+010000000141045e0ab2b0b82cdefaf9e9a8ca9ec9df17673d6a74e274d0c73ae77d3f131e000000004a493046022100a7f26eda874931999c90f87f01ff1ffc76bcd058fe16137e0e63fdb6a35c2d78022100a61e9199238eb73f07c8f209504c84b80f03e30ed8169edd44f80ed17ddf451901ffffffff010010a5d4e80000001976a9147ec1003336542cae8bded8909cdd6b5e48ba0ab688ac00000000
+
+all incoming transaction values validated
+```
+
+现在，我们来看一下特定地址（UTXO）的未使用输出。 在块＃1中，我们看到一个钱币交易到12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX。 让我们用fetch\_unspent来查找这个地址中的所有钱币：
+
+```
+$ fetch_unspent 12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX
+a3a6f902a51a2cbebede144e48a88c05e608c2cce28024041a5b9874013a1e2a/0/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/333000
+cea36d008badf5c7866894b191d3239de9582d89b6b452b596f1f1b76347f8cb/31/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/10000
+065ef6b1463f552f675622a5d1fd2c08d6324b4402049f68e767a719e2049e8d/86/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/10000
+a66dddd42f9f2491d3c336ce5527d45cc5c2163aaed3158f81dc054447f447a2/0/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/10000
+ffd901679de65d4398de90cefe68d2c3ef073c41f7e8dbec2fb5cd75fe71dfe7/0/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/100
+d658ab87cc053b8dbcfd4aa2717fd23cc3edfe90ec75351fadd6a0f7993b461d/5/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/911
+36ebe0ca3237002acb12e1474a3859bde0ac84b419ec4ae373e63363ebef731c/1/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/100000
+fd87f9adebb17f4ebb1673da76ff48ad29e64b7afa02fda0f2c14e43d220fe24/0/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/1
+dfdf0b375a987f17056e5e919ee6eadd87dad36c09c4016d4a03cea15e5c05e3/1/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/1337
+cb2679bfd0a557b2dc0d8a6116822f3fcbe281ca3f3e18d3855aa7ea378fa373/0/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/1337
+d6be34ccf6edddc3cf69842dce99fe503bf632ba2c2adb0f95c63f6706ae0c52/1/76a914119b098e2e980a229e139a9ed01a469e518e6f2688ac/2000000
+    0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098/0/410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac/5000000000
+```
+
+
+
+
 
 
 
