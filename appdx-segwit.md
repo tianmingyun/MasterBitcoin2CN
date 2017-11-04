@@ -306,7 +306,7 @@ This is the one difference that allows a wallet to differentiate between the two
 
 As we can see from the previous examples, upgrading to Segregated Witness is a two-step process. First, wallets must create special segwit type outputs. Then, these outputs can be spent by wallets that know how to construct Segregated Witness transactions. In the examples, Alice’s wallet was segwit-aware and able to create special outputs with Segregated Witness scripts. Bob’s wallet is also segwit-aware and able to spend those outputs. What may not be obvious from the example is that in practice, Alice’s wallet needs to *know* that Bob uses a segwit-aware wallet and can spend these outputs. Otherwise, if Bob’s wallet is not upgraded and Alice tries to make segwit payments to Bob, Bob’s wallet will not be able to detect these payments.
 
-正如我们前面看到的例子，隔离见证的升级需要经过两步过程。首先，钱包必须创建特殊的隔离型输出。然后，这些输出可以被知道如何构建隔离见证事务的钱包花费。在这些例子中，Alice的钱包是segwit意识到的，并且能够使用Segregated Witness脚本创建特殊输出。鲍勃的钱包也是segwit意识到，并能够花这些输出。从这个例子中可能不明显的是，在实践中，Alice的钱包需要知道Bob使用了一个支持segwit的钱包，并可以使用这些输出。否则，如果鲍勃的钱包没有升级，并且Alice试图对Bob进行分段付款，那么鲍勃的钱包将无法检测到这些付款。
+正如我们前面看到的例子，隔离见证的升级需要经过两步过程。首先，钱包必须创建特殊的隔离型输出。然后，这些输出可以被知道如何构建隔离见证事务的钱包花费。在这些例子中，爱丽丝的钱包是segwit意识到的，并且能够使用Segregated Witness脚本创建特殊输出。鲍勃的钱包也是segwit意识到，并能够花这些输出。从这个例子中可能不明显的是，在实践中，爱丽丝的钱包需要知道Bob使用了一个支持segwit的钱包，并可以使用这些输出。否则，如果鲍勃的钱包没有升级，并且Alice试图对Bob进行分段付款，那么鲍勃的钱包将无法检测到这些付款。
 
 | Tip  | For P2WPKH and P2WSH payment types, both the sender and the recipient wallets need to be upgraded to be able to use segwit. Furthermore, the sender’s wallet needs to know that the recipient’s wallet is segwit-aware. |
 | ---- | ---------------------------------------- |
@@ -335,11 +335,11 @@ Segregated Witness will not be implemented simultaneously across the entire netw
 
 Let’s assume, for example, that Alice’s wallet is not upgraded to segwit, but Bob’s wallet is upgraded and can handle segwit transactions. Alice and Bob can use "old" non-segwit transactions. But Bob would likely want to use segwit to reduce transaction fees, taking advantage of the discount that applies to witness data.
 
-举个例子，假设Alice的钱包没有升级到segwit，但是鲍勃的钱包已经升级，可以处理segwit交易。Alice和Bob可以使用“旧”非segwit交易。但是鲍勃很可能会使用segwit来降低交易费用，利用适用于目击者数据的折扣。
+举个例子，假设爱丽丝的钱包没有升级到segwit，但是鲍勃的钱包已经升级，可以处理segwit交易。爱丽丝和鲍勃可以使用“旧”非segwit交易。但是鲍勃很可能会使用segwit来降低交易费用，利用适用于目击者数据的折扣。
 
 In this case Bob’s wallet can construct a P2SH address that contains a segwit script inside it. Alice’s wallet sees this as a "normal" P2SH address and can make payments to it without any knowledge of segwit. Bob’s wallet can then spend this payment with a segwit transaction, taking full advantage of segwit and reducing transaction fees.
 
-在这种情况下，鲍勃的钱包可以构建一个包含一个segwit脚本的P2SH地址。Alice的钱包认为这是一个“正常的”P2SH地址，并可以在没有任何segwit的知识的情况下付款。然后，鲍勃的钱包可以通过隔离交易来支付这笔款项，充分利用隔离交易并降低交易费用。
+在这种情况下，鲍勃的钱包可以构建一个包含一个segwit脚本的P2SH地址。爱丽丝的钱包认为这是一个“正常的”P2SH地址，并可以在没有任何segwit的知识的情况下付款。然后，鲍勃的钱包可以通过隔离交易来支付这笔款项，充分利用隔离交易并降低交易费用。
 
 Both forms of witness scripts, P2WPKH and P2WSH, can be embedded in a P2SH address. The first is noted as P2SH(P2WPKH) and the second is noted as P2SH(P2WSH).
 
@@ -359,11 +359,11 @@ Bob’s wallet constructs a P2WPKH witness program with Bob’s public key. This
 
 Bob’s wallet starts with the P2WPKH witness program we saw earlier:
 
-鲍勃的钱包从我们之前看到的P2WPKH 见证计划开始：
+鲍勃的钱包从我们之前看到的P2WPKH 见证程序开始：
 
 Bob’s P2WPKH witness program
 
-Bob 的见证计划：
+鲍勃的见证程序：
 
 ```
 0 ab68025513c3dbd2f7b92a94e0581f5d50f654e7
@@ -407,7 +407,7 @@ P2SH地址
 
 Now, Bob can display this address for customers to pay for their coffee. Alice’s wallet can make a payment to 3deadbeef, just as it would to any other bitcoin address. Even though Alice’s wallet has no support for segwit, the payment it creates can be spent by Bob with a segwit transaction.
 
-现在，Bob可以显示这个地址给顾客付钱买咖啡。Alice的钱包可以支付给3deadbeef，就像任何其他比特币地址一样。尽管Alice的钱包不支持segwit，但它创建的付款可以由Bob使用segwit交易进行支付。
+现在，鲍勃可以显示这个地址给顾客付钱买咖啡。爱丽丝的钱包可以支付给3deadbeef，就像任何其他比特币地址一样。尽管爱丽丝的钱包不支持segwit，但它创建的付款可以由鲍勃使用segwit交易进行支付。
 
 ##### Pay-to-Witness-Script-Hash inside Pay-to-Script-Hash
 
@@ -419,7 +419,7 @@ Similarly, a P2WSH witness program for a multisig script or other complicated sc
 
 As we saw in [Pay-to-Witness-Script-Hash (P2WSH)](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/appdx-segwit.asciidoc#p2wsh), Mohammed’s company is using Segregated Witness payments to multisignature scripts. To make it possible for any client to pay his company, regardless of whether their wallets are upgraded for segwit, Mohammed’s wallet can embed the P2WSH witness program inside a P2SH script.
 
-正如我们在[Pay-to-Witness-Script-Hash（P2WSH）]（https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/appdx-segwit.asciidoc#p2wsh）中看到的，穆罕默德的公司正在使用隔离见证 对多重签名脚本的付款。为了让任何客户支付他的公司，无论他们的钱包是否升级为隔离开关，穆罕默德的钱包都可以在P2SH脚本中嵌入P2WSH证人程序。
+正如我们在[Pay-to-Witness-Script-Hash（P2WSH）](https://github.com/bitcoinbook/bitcoinbook/blob/second_edition/appdx-segwit.asciidoc#p2wsh)中看到的，穆罕默德的公司正在使用隔离见证 对多重签名脚本的付款。为了让任何客户支付他的公司，无论他们的钱包是否升级为隔离开关，穆罕默德的钱包都可以在P2SH脚本中嵌入P2WSH证人程序。
 
 First, Mohammed’s wallet creates the P2WSH witness program that corresponds to the multisignature script, hashed with SHA256:
 
