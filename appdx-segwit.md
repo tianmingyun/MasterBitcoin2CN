@@ -244,13 +244,24 @@ This is the one difference that allows a wallet to differentiate between the two
 
 #### Upgrading to Segregated Witness
 
+#### 隔离见证升级
+
 As we can see from the previous examples, upgrading to Segregated Witness is a two-step process. First, wallets must create special segwit type outputs. Then, these outputs can be spent by wallets that know how to construct Segregated Witness transactions. In the examples, Alice’s wallet was segwit-aware and able to create special outputs with Segregated Witness scripts. Bob’s wallet is also segwit-aware and able to spend those outputs. What may not be obvious from the example is that in practice, Alice’s wallet needs to *know* that Bob uses a segwit-aware wallet and can spend these outputs. Otherwise, if Bob’s wallet is not upgraded and Alice tries to make segwit payments to Bob, Bob’s wallet will not be able to detect these payments.
+
+正如我们前面看到的例子，隔离见证的升级需要经过两步过程。 首先，钱包必须创建特殊的隔离型输出。 然后，这些输出可以被知道如何构建隔离见证事务的钱包花费。 在这些例子中，Alice的钱包是segwit意识到的，并且能够使用Segregated Witness脚本创建特殊输出。 鲍勃的钱包也是segwit意识到，并能够花这些输出。 从这个例子中可能不明显的是，在实践中，Alice的钱包需要知道Bob使用了一个支持segwit的钱包，并可以使用这些输出。 否则，如果Bob的钱包没有升级，并且Alice试图对Bob进行分段付款，那么Bob的钱包将无法检测到这些付款。
 
 | Tip  | For P2WPKH and P2WSH payment types, both the sender and the recipient wallets need to be upgraded to be able to use segwit. Furthermore, the sender’s wallet needs to know that the recipient’s wallet is segwit-aware. |
 | ---- | ---------------------------------------- |
 |      |                                          |
 
+| 提示  | 对于P2WPKH和P2WSH付款类型，发件人和收件人钱包都需要升级才能使用segwit。 此外，发件人的钱包需要知道收件人的钱包是否具有隔离识别功能。 |
+| ---- | ---------------------------------------- |
+|      |                                          |
+
+
 Segregated Witness will not be implemented simultaneously across the entire network. Rather, Segregated Witness is implemented as a backward-compatible upgrade, where *old and new clients can coexist*. Wallet developers will independently upgrade wallet software to add segwit capabilities. The P2WPKH and P2WSH payment types are used when both sender and recipient are segwit-aware. The traditional P2PKH and P2SH will continue to work for nonupgraded wallets. That leaves two important scenarios, which are addressed in the next section:
+
+隔离见证不会在整个网络中同时实施。相反，隔离见证被实施为向后兼容的升级，其中*新老客户可以共存*。钱包开发人员将独立升级钱包软件以添加隔离区功能。当发件人和收件人都可以感知到网志时，使用P2WPKH和P2WSH付款类型。传统的P2PKH和P2SH将继续为非升级的钱包工作。这留下了两个重要的情况，下一节将讨论这个情况：
 
 - Ability of a sender’s wallet that is not segwit-aware to make a payment to a recipient’s wallet that can process segwit transactions
 - Ability of a sender’s wallet that is segwit-aware to recognize and distinguish between recipients that are segwit-aware and ones that are not, by their *addresses*
