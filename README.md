@@ -49,3 +49,16 @@ Robbie_英语翻译：第4章审核校对
 即便如此，当前版本还可能存在部分错误，欢迎读者在github上提交勘误，也可以发至邮箱：yuntianming@aliyun.com
 
 乔延宏 2017.11.11
+
+
+
+## Mastering Bitcoin - Second Edition 版权说明
+
+The [second_edition](https://github.com/bitcoinbook/bitcoinbook/tree/second_edition) branch, is the source for the published versions of Mastering Bitcoin (Second Edition).
+
+The tag [second_edition_print_1](https://github.com/bitcoinbook/bitcoinbook/releases/tag/second_edition_print_1), corresponds to the first print of the second edition.
+
+[![Creative Commons License](http://upload-images.jianshu.io/upload_images/1785959-177b27ea70947c7d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://creativecommons.org/licenses/by-nc-nd/4.0/) 
+Mastering Bitcoin - Second Edition by [Andreas M. Antonopoulos LLC](https://antonopoulos.com/) is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+It is expected that the second edition will be released under a CC-BY-SA license within a year of publication.
