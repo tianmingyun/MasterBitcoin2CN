@@ -82,27 +82,27 @@
 
 你可以在我的个人网站联系我（Andreas M. Antonopoulos）:
 
-link:$$https://antonopoulos.com/$$
+link:https://antonopoulos.com/
 
 《精通比特币》的信息以及开放版本与翻译的信息可以在此网址获取:
 
-link:$$https://bitcoinbook.info/$$
+link:https://bitcoinbook.info/
 
 请关注我Facebook账号:
 
-link:$$https://facebook.com/AndreasMAntonopoulos$$
+link:https://facebook.com/AndreasMAntonopoulos
 
 请关注我Twitter账号:
 
-link:$$https://twitter.com/aantonop$$
+link:https://twitter.com/aantonop
 
 请关注我领英账号:
 
-link:$$https://linkedin.com/company/aantonop$$
+link:https://linkedin.com/company/aantonop
 
 特别感谢所有的赞助人，是他们支持我了数月的工作。你可以访问我的赞助人网站：
 
-link:$$https://patreon.com/aantonop$$
+link:https://patreon.com/aantonop
 
  **鸣谢**
 
