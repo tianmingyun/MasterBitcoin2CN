@@ -68,15 +68,15 @@
 
 会员可以在该平台获取来自超过250家出版社提供的成千上万的书籍、培训视频、学习路径、交互教程、策划播放列表，这些公司包括：Prentice Hall Professional, Addison-Wesley Professional, MicrosoftPress, Sams, Que, Peachpit Press, Adobe, Focal Press, Cisco Press, John Wiley& Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FTPress, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett以及CourseTechnology，除此之外还有其他很多公司。
 
- 要获取更多信息，请访问:[<a href"http://oreilly.com/safari" class"orm:hideurl">]<em>http://oreilly.com/safari</em></a>
+ 要获取更多信息，请访问:http://oreilly.com/safari
 
- 要想更多了解我们书籍、课程、会议和新闻的信息，可以登录我们的官网:$$http://www.oreilly.com$$.
+ 要想更多了解我们书籍、课程、会议和新闻的信息，可以登录我们的官网:http://www.oreilly.com
 
 我们Facebook账号: link:http://facebook.com/oreilly
 
-关注我们的Twitter账号:  link:$$http://twitter.com/oreillymedia$$
+关注我们的Twitter账号:  link:http://twitter.com/oreillymedia
 
-我们在YouTube上的视频🔗$$http://www.youtube.com/oreillymedia$$
+我们在YouTube上的视频🔗http://www.youtube.com/oreillymedia
 
 联系作者
 
