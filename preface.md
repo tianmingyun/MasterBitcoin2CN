@@ -72,7 +72,7 @@
 
  要想更多了解我们书籍、课程、会议和新闻的信息，可以登录我们的官网:$$http://www.oreilly.com$$.
 
-我们Facebook账号: link:$$http://facebook.com/oreilly$$
+我们Facebook账号: link:http://facebook.com/oreilly
 
 关注我们的Twitter账号:  link:$$http://twitter.com/oreillymedia$$
 
