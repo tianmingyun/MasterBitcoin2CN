@@ -1,11 +1,11 @@
 # Summary
 
 * [Introduction](README.md)
-* [中文版序言](cn-preface.md）
-* [译者序](trans-preface.md）
-* [序言](preface.md）
-* [第二版更新内容](second_edition_changes.md）
-* [词汇表](glossary.md）
+* [中文版序言](cn-preface.md)
+* [译者序](trans-preface.md)
+* [序言](preface.md)
+* [第二版更新内容](second_edition_changes.md)
+* [词汇表](glossary.md)
 * [第一章介绍](ch01.md)
 * [第二章比特币原理](ch02.md)
 * [第三章比特币核心](ch03.md)
