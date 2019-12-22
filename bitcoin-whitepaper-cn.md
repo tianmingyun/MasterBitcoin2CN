@@ -214,6 +214,8 @@ $$
 \end{Bmatrix}
 $$
 
+![1.png](https://upload-images.jianshu.io/upload_images/1785959-ffa3086f27ca1925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 Given our assumption that , the probability drops exponentially as the number of blocks the attacker has to catch up with increases. With the odds against him, if he doesn't make a lucky lunge forward early on, his chances become vanishingly small as he falls further behind.
@@ -238,6 +240,7 @@ $$
 \large \lambda = z \frac qp
 $$
 
+![2.png](https://upload-images.jianshu.io/upload_images/1785959-4d6590b2182058bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 To get the probability the attacker could still catch up now, we multiply the Poisson density for each amount of progress he could have made by the probability he could catch up from that point:
 
@@ -253,6 +256,7 @@ $$
 \end{Bmatrix}
 $$
 
+![3.png](https://upload-images.jianshu.io/upload_images/1785959-acb09b9cf1e5b5b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 Rearranging to avoid summing the infinite tail of the distribution...
 
@@ -265,6 +269,7 @@ $$
 \left ( 1-(q/p)^{(z-k)} \right )
 $$
 
+![4.png](https://upload-images.jianshu.io/upload_images/1785959-a8e475d0088db6b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 Converting to C code...
 
