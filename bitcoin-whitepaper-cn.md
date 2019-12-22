@@ -58,7 +58,7 @@ We define an electronic coin as a chain of digital signatures. Each owner transf
 
 　　我们将一枚电子硬币定义为一个数字签名链。一位所有者将一枚硬币交给另一个人的时候，要通过在这个数字签名链的末尾附加上以下数字签名：上一笔交易的哈希（hash，音译，亦翻译为“散列值”），以及新所有者的公钥。收款人可以通过验证签名去验证数字签名链的所属权。
 
-![img](http://www.btcpapers.com/images/transactions.svg)
+![img](https://github.com/xiaolai/bitcoin-whitepaper-chinese-translation/blob/master/images/transactions.svg)
 
 The problem of course is the payee can't verify that one of the owners did not double-spend the coin. A common solution is to introduce a trusted central authority, or mint, that checks every transaction for double spending. After each transaction, the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. The problem with this solution is that the fate of the entire money system depends on the company running the mint, with every transaction having to go through them, just like a bank.
 
