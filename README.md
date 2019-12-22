@@ -56,6 +56,19 @@ Robbie_英语翻译：第4章审核校对
 
 https://item.jd.com/12620946.html
 
+2019年10月开始到2019年12月底，对github上的第二版进行了一次全面的校对，更新了下面的内容：
+
+1、格式方面：增加章节名称。所有“提示”，“警告”，“注意”等全部改为引用。引用章节增加链接和中文括号。
+
+2、图片：图片未做翻译，链接全部改用英文版链接。
+
+3、与英文版内容同步更新至2019年9月。修正部分章节的明确错误，翻译不准确，表达琐碎之处。增加了可执行文件的源代码。
+
+4、增加比特币白皮书的李笑来翻译版本，附其他版本链接。
+
+乔延宏   2019.12.22
+
+
 ## Mastering Bitcoin - Second Edition 版权说明
 
 The [second_edition](https://github.com/bitcoinbook/bitcoinbook/tree/second_edition) branch, is the source for the published versions of Mastering Bitcoin (Second Edition).
