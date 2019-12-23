@@ -1,6 +1,7 @@
+# 附录4 Bitcore
 Bitcore是BitPay提供的一套工具。 其目标是为Bitcoin开发人员提供易于使用的工具。 几乎所有的Bitcore的代码都是用JavaScript编写的。 有一些专门为NodeJS编写的模块。 最后，Bitcore的“节点”模块包括Bitcoin Core的C ++代码。 有关详细信息，请参阅[https://bitcore.io](https://bitcore.io/)。
 
-# Bitcore的功能列表
+## Bitcore的功能列表
 
 Bitcoin full node \(bitcore-node\)  
 Block explorer \(insight\)  
@@ -15,9 +16,9 @@ Wallet client \(bitcore-wallet-client\)
 Playground \(bitcore-playground\)  
 Integrating services directly with Bitcoin Core \(bitcore-node\)
 
-# Bitcore库示例
+## Bitcore库示例
 
-## 先决条件
+### 先决条件
 
 NodeJS &gt;= 4.x 或者使用[hosted online playground](https://bitcore.io/playground)
 
@@ -28,7 +29,7 @@ $ npm install -g bitcore-lib bitcore-p2p
 $ NODE_PATH=$(npm list -g | head -1)/node_modules node
 ```
 
-## 使用bitcore-lib的钱包示例
+### 使用bitcore-lib的钱包示例
 
 使用关联的私钥创建新的比特币地址：
 
