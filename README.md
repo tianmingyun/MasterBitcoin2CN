@@ -68,6 +68,14 @@ https://item.jd.com/12620946.html
 
 乔延宏   2019.12.22
 
+鸣谢:
+
+区块链研习社
+
+[![云天明区块链数据导航](http://ytm.ltd/zb_users/upload/ytm.ltd.png)](http://ytm.ltd)
+
+
+
 
 ## Mastering Bitcoin - Second Edition 版权说明
 
