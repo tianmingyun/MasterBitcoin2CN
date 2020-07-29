@@ -119,18 +119,18 @@
 
 表8.加密和散列操作
 
-| 符号                     | 值 (十六进制) | 描述                                       |
-| ---------------------- | -------- | ---------------------------------------- |
-| OP_RIPEMD160           | 0xa6     | 返回栈顶项的RIPEMD160 哈希值                      |
-| OP_SHA1                | 0xa7     | 返回栈顶项SHA1 哈希值                            |
-| OP_SHA256              | 0xa8     | 返回栈顶项SHA256 哈希值                          |
-| OP_HASH160             | 0xa9     | 栈顶项进行两次HASH，先用SHA-256，再用RIPEMD-160       |
-| OP_HASH256             | 0xaa     | 栈顶项用SHA-256 算法HASH 两次                    |
-| OP_CODESEPARATOR       | 0xab     | 标记已进行签名验证的数据                             |
-| OP_CHECKSIG            | 0xac     | 交易所用的签名必须是哈希值和公钥的有效签名，如果为真，则返回1          |
-| OP_CHECKSIGVERIFY      | 0xad     | 与CHECKSIG 一样，但之后运行OP_VERIFY              |
-| OP_CHECKMULTISIG       | 0xae     | 对于每对签名和公钥运行CHECKSIG。所有的签名要与公钥匹配。因为存在BUG，一个未使用的外部值会从堆栈中删除。 |
-| OP_CHECKMULTISIGVERIFY | 0xaf     | 与CHECKMULTISIG 一样，但之后运行OP_VERIFY         |
+| 符号                   | 值 (十六进制) | 描述                                                         |
+| ---------------------- | ------------- | ------------------------------------------------------------ |
+| OP_RIPEMD160           | 0xa6          | 返回栈顶项的RIPEMD160 哈希值                                 |
+| OP_SHA1                | 0xa7          | 返回栈顶项SHA1 哈希值                                        |
+| OP_SHA256              | 0xa8          | 返回栈顶项SHA256 哈希值                                      |
+| OP_HASH160             | 0xa9          | 栈顶项进行两次HASH，先用SHA-256，再用RIPEMD-160              |
+| OP_HASH256             | 0xaa          | 栈顶项用SHA-256 算法HASH 两次                                |
+| OP_CODESEPARATOR       | 0xab          | 标记已进行签名验证的数据                                     |
+| OP_CHECKSIG            | 0xac          | 交易所用的签名必须是哈希值和公钥的有效签名，如果为真，则返回1 |
+| OP_CHECKSIGVERIFY      | 0xad          | 与CHECKSIG 一样，但之后运行OP_VERIFY                         |
+| OP_CHECKMULTISIG       | 0xae          | 对于每对签名和公钥运行CHECKSIG。所有的签名要与公钥匹配。实现中存在一个BUG，会从堆栈中弹出一个前缀为OP_0的值。 |
+| OP_CHECKMULTISIGVERIFY | 0xaf          | 与CHECKMULTISIG 一样，但之后运行OP_VERIFY                    |
 
 表9.非操作符
 
