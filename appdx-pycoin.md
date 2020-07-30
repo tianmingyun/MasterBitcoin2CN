@@ -1,4 +1,4 @@
-# 附录6、pycoin
+# 附录E、pycoin
 
 最初由Richard Kiss编写和维护的Python库pycoin是一个基于Python的库，支持对比特币密钥和交易进行操作，甚至支持足够的脚本语言来适当地处理非标准交易。
 

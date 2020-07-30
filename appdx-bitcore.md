@@ -1,4 +1,4 @@
-# 附录4 Bitcore
+# 附录D Bitcore
 Bitcore是BitPay提供的一套工具。 其目标是为Bitcoin开发人员提供易于使用的工具。 几乎所有的Bitcore的代码都是用JavaScript编写的。 有一些专门为NodeJS编写的模块。 最后，Bitcore的“节点”模块包括Bitcoin Core的C ++代码。 有关详细信息，请参阅[https://bitcore.io](https://bitcore.io/)。
 
 ## Bitcore的功能列表
