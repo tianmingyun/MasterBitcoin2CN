@@ -94,7 +94,7 @@ https://item.jd.com/12620946.html
 
 区块链研习社
 
-[![云天明区块链数据导航](http://ytm.ltd/zb_users/upload/ytm.ltd.png)](http://ytm.ltd)
+[![云天明区块链资源导航](https://ytm.app/wp-content/uploads/2023/11/logo-white.png)](http://ytm.app)
 
 
 
