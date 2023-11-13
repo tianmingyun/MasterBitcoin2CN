@@ -94,9 +94,7 @@ https://item.jd.com/12620946.html
 
 区块链研习社
 
-[![云天明区块链资源导航](https://ytm.app/wp-content/uploads/2023/11/logo-white.png)](http://ytm.app){ width=30% height=auto }
-
-
+<a href ="https://ytm.app"><img src="https://ytm.app/wp-content/uploads/2023/11/logo-white.png" width="20%" height="auto"></a>
 
 
 ## Mastering Bitcoin - Second Edition 版权说明
